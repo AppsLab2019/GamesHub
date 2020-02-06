@@ -11,10 +11,14 @@ namespace GamesHub
         {
             InitializeComponent();
         }
-
-        private void Button_OnClicked(object sender, EventArgs e)
+        private void TicTacToe_Button_OnClicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new TicTacToe());
+        }
+
+        private void Reaction_Button_OnClicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Reaction());
         }
     }
 }

@@ -9,7 +9,8 @@
     <Shell.NavBarIsVisible>False</Shell.NavBarIsVisible>
     <ContentPage.Content>
         <StackLayout BackgroundColor="#313131">
-            <Button Text="TicTacToe" Clicked="Button_OnClicked" BackgroundColor="#525252" />
+            <Button Text="TicTacToe" Clicked="TicTacToe_Button_OnClicked" BackgroundColor="#525252" />
+            <Button Text="Reaction" Clicked="Reaction_Button_OnClicked" BackgroundColor="#525252" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
