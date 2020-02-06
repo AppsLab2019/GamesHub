@@ -1,4 +1,10 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace GamesHub
@@ -6,9 +12,33 @@ namespace GamesHub
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Reaction : ContentPage
     {
+        private int _points1 = 0;
+        private int _points2 = 0;
         public Reaction()
         {
             InitializeComponent();
+        }
+
+        private void StartButton(object sender, EventArgs e)
+        {
+            MainButton.Text = null;
+            MainButton.IsEnabled = false;
+            while (_points1 != 3 || _points2 != 3)
+            {
+                var wait = new System.Random().Next(3000, 8000);
+                System.Threading.Thread.Sleep(wait);
+                MainButton.BackgroundColor = Color.LimeGreen;
+            }
+        }
+
+        private void Player1Score(object sender, EventArgs e)
+        {
+            _points1++;
+        }
+
+        private void Player2Score(object sender, EventArgs e)
+        {
+            _points2++;
         }
     }
 }
