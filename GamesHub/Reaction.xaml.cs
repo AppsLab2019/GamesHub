@@ -22,23 +22,30 @@ namespace GamesHub
         private void StartButton(object sender, EventArgs e)
         {
             MainButton.Text = null;
-            MainButton.IsEnabled = false;
-            while (_points1 != 3 || _points2 != 3)
-            {
-                var wait = new System.Random().Next(3000, 8000);
-                System.Threading.Thread.Sleep(wait);
-                MainButton.BackgroundColor = Color.LimeGreen;
-            }
+            MainButton.IsEnabled = false; 
+            var wait = new System.Random().Next(3000, 8000);
+            System.Threading.Thread.Sleep(wait);
+            MainButton.BackgroundColor = Color.LimeGreen;
+            
         }
 
         private void Player1Score(object sender, EventArgs e)
         {
+            MainButton.BackgroundColor = Color.White;
+            //StartButton();
             _points1++;
         }
 
         private void Player2Score(object sender, EventArgs e)
         {
+            MainButton.BackgroundColor = Color.White;
+            //StartButton();
             _points2++;
+        }
+
+        private void Abc()
+        {
+            MainButton.
         }
     }
 }
