@@ -12,8 +12,6 @@ namespace GamesHub
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Reaction : ContentPage
     {
-        private int _points1 = 0;
-        private int _points2 = 0;
         public Reaction()
         {
             InitializeComponent();
@@ -32,20 +30,18 @@ namespace GamesHub
         private void Player1Score(object sender, EventArgs e)
         {
             MainButton.BackgroundColor = Color.White;
-            //StartButton();
-            _points1++;
+            DisplayAlert("WINNER", "Player1 Won", "JA VIEM", "DAJ MI POKOJ");
+            MainButton.Text = "START";
+            MainButton.IsEnabled = true;
         }
 
         private void Player2Score(object sender, EventArgs e)
         {
             MainButton.BackgroundColor = Color.White;
-            //StartButton();
-            _points2++;
+            DisplayAlert("WINNER", "Player2 Won", "JA VIEM", "DAJ MI POKOJ");
+            MainButton.Text = "START";
+            MainButton.IsEnabled = true;
         }
 
-        private void Abc()
-        {
-            MainButton.
-        }
     }
 }
