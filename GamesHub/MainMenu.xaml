@@ -5,8 +5,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="GamesHub.MainMenu">
-    <Shell.NavBarIsVisible>False</Shell.NavBarIsVisible>
+             x:Class="GamesHub.MainMenu"
+             Title="Games">
     <ContentPage.Content>
         <StackLayout BackgroundColor="#313131">
             <Button Text="TicTacToe" Clicked="TicTacToe_Button_OnClicked" BackgroundColor="#525252" />

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -32,12 +34,11 @@ namespace GamesHub
         {
             ((ImageButton) sender).Source = _turn++ % 2 == 1 ? ImageCircle : ImageX;
             ((ImageButton) sender).IsEnabled = false;
-            if (WhoIsWinner() == ImageXSource)
-                DisplayAlert("WINNER", "X WON!", "JA VIEM", "DAJ MI POKOJ");
-            else if (WhoIsWinner() == ImageCircleSource) DisplayAlert("WINNER", "O WON!", "JA VIEM", "DAJ MI POKOJ");
+            DisplayWinner();
+            
         }
 
-        private void Reset(object sender, EventArgs e)
+        private void Reset()
         {
             foreach (var button in Buttons)
             {
@@ -67,6 +68,25 @@ namespace GamesHub
             if (ib2.IsEnabled != true && ib2.Source.ToString() == ib4.Source.ToString() &&
                 ib4.Source.ToString() == ib6.Source.ToString()) return ib2.Source.ToString();
             return null;
+        }
+
+        private async void DisplayWinner()
+        {
+            if (WhoIsWinner() == ImageXSource)
+            {
+                await DisplayAlert("Winner", "X Won!", "OK");
+                Reset();
+            }
+            else if (WhoIsWinner() == ImageCircleSource)
+            {
+                await DisplayAlert("Winner", "O Won!", "OK");
+                Reset();
+            }
+            else if (WhoIsWinner() == null && _turn == 10)
+            {
+                await DisplayAlert("Tie", "It's a tie!", "OK");
+                Reset();
+            }
         }
     }
 }

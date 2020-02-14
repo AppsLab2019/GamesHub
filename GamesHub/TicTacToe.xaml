@@ -5,7 +5,9 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="GamesHub.TicTacToe">
+             x:Class="GamesHub.TicTacToe"
+             Title="TicTacToe">
+    
     <ContentPage.Content>
         <StackLayout BackgroundColor="#FFDBC7">
             <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" ColumnSpacing="15"
@@ -40,7 +42,7 @@
                 <ImageButton x:Name="ib8" Aspect="Fill" Clicked="Clicked" BackgroundColor="#FFDBC7" Grid.Column="2"
                              Grid.Row="2" />
             </Grid>
-            <Button x:Name="ResetButton" Text="Reset" Clicked="Reset" />
+            
         </StackLayout>
 
     </ContentPage.Content>
