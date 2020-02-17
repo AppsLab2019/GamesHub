@@ -18,10 +18,7 @@ namespace GamesHub
         private void StartButton(object sender, EventArgs e)
         {
             MainButton.Text = "";
-            var wait = new Random().Next(3000, 8000);
-            _timer = new Timer(wait);
-            _timer.Elapsed += OnTimedEvent;
-            _timer.Enabled = true;
+            SetTimer();        
         }
 
         private void Player1Score(object sender, EventArgs e)
@@ -35,12 +32,20 @@ namespace GamesHub
         {
             if (MainButton.BackgroundColor != Color.LimeGreen) return;
             MainButton.BackgroundColor = Color.White;
-            DisplayAlert("WINNER", "Player1 Won", "JA VIEM", "DAJ MI POKOJ");
+            DisplayAlert("WINNER", "Player2 Won", "JA VIEM", "DAJ MI POKOJ");
         }
 
         private void OnTimedEvent(object source, ElapsedEventArgs e)
         {
             MainButton.BackgroundColor = Color.LimeGreen;
+        }
+        private void SetTimer()
+        {
+            MainButton.IsEnabled = false;
+            var wait = new Random().Next(3000, 8000);
+            _timer = new Timer(wait);
+            _timer.Elapsed += OnTimedEvent;
+            _timer.Enabled = true;
         }
     }
 }
