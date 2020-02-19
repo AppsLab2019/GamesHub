@@ -9,6 +9,7 @@ namespace GamesHub
             InitializeComponent();
 
             MainPage = new AppShell();
+            MainPage.SetValue(NavigationPage.BarBackgroundColorProperty, Color.Black);
         }
 
         protected override void OnStart()

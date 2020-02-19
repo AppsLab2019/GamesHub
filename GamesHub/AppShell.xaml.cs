@@ -1,4 +1,5 @@
 ﻿using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace GamesHub
@@ -9,6 +10,7 @@ namespace GamesHub
         public AppShell()
         {
             InitializeComponent();
+            
         }
     }
 }

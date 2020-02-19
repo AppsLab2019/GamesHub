@@ -6,11 +6,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="GamesHub.MainMenu"
-             Title="Games">
+             Title="Games"
+             Shell.BackgroundColor="#272727"
+             Shell.TitleColor="White">
+
     <ContentPage.Content>
-        <StackLayout BackgroundColor="#313131">
-            <Button Text="TicTacToe" Clicked="TicTacToe_Button_OnClicked" BackgroundColor="#525252" />
-            <Button Text="Reaction" Clicked="Reaction_Button_OnClicked" BackgroundColor="#525252" />
+        <StackLayout BackgroundColor="#121212">
+            <Image Source="GamesHub_Logo.png"></Image>
+            <Button Text="TicTacToe" Clicked="TicTacToe_Button_OnClicked" TextColor="White" BackgroundColor="#1E1E1E" />
+            <Button Text="Reaction" Clicked="Reaction_Button_OnClicked" TextColor="White" BackgroundColor="#1E1E1E" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
