@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Timers;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -8,7 +7,6 @@ namespace GamesHub
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Reaction : ContentPage
     {
-        private static Timer _timer;
 
         public Reaction()
         {
@@ -17,35 +15,37 @@ namespace GamesHub
 
         private void StartButton(object sender, EventArgs e)
         {
+            Player1.IsEnabled = true;
+            Player2.IsEnabled = true;
             MainButton.Text = "";
-            SetTimer();        
+            MainButton.IsEnabled = false;
+            var wait = new Random().Next(3, 8);
+            Device.StartTimer(TimeSpan.FromSeconds(wait), () =>
+            { 
+                MainButton.BackgroundColor = Color.LimeGreen;
+                return false;
+            });
         }
 
         private void Player1Score(object sender, EventArgs e)
         {
             if (MainButton.BackgroundColor != Color.LimeGreen) return;
+            Player2.IsEnabled = false;
             MainButton.BackgroundColor = Color.White;
-            DisplayAlert("WINNER", "Player1 Won", "JA VIEM", "DAJ MI POKOJ");
+            MainButton.Text = "START";
+            MainButton.IsEnabled = true;
+            DisplayAlert("WINNER", "Player1 Won", "OK");
         }
 
-        private void Player2Score(object sender, EventArgs e)
+        private void Player2Score(object sender, EventArgs e) 
         {
             if (MainButton.BackgroundColor != Color.LimeGreen) return;
+            Player1.IsEnabled = false;
             MainButton.BackgroundColor = Color.White;
-            DisplayAlert("WINNER", "Player2 Won", "JA VIEM", "DAJ MI POKOJ");
+            MainButton.Text = "START";
+            MainButton.IsEnabled = true;
+            DisplayAlert("WINNER", "Player2 Won", "OK");
         }
 
-        private void OnTimedEvent(object source, ElapsedEventArgs e)
-        {
-            MainButton.BackgroundColor = Color.LimeGreen;
-        }
-        private void SetTimer()
-        {
-            MainButton.IsEnabled = false;
-            var wait = new Random().Next(3000, 8000);
-            _timer = new Timer(wait);
-            _timer.Elapsed += OnTimedEvent;
-            _timer.Enabled = true;
-        }
     }
 }
