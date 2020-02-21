@@ -20,5 +20,10 @@ namespace GamesHub
         {
             Navigation.PushAsync(new Reaction());
         }
+
+        private void Snake_Button_OnClicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Snake());
+        }
     }
 }

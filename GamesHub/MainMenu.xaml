@@ -15,6 +15,7 @@
             <Image Source="GamesHub_Logo.png"></Image>
             <Button Text="TicTacToe" Clicked="TicTacToe_Button_OnClicked" TextColor="White" BackgroundColor="#1E1E1E" />
             <Button Text="Reaction" Clicked="Reaction_Button_OnClicked" TextColor="White" BackgroundColor="#1E1E1E" />
+            <Button Text="Snake" Clicked="Snake_Button_OnClicked" TextColor="White" BackgroundColor="#1E1E1E" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
