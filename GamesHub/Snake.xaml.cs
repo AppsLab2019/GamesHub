@@ -18,7 +18,6 @@ namespace GamesHub
             InitializeComponent();
             Image = new[] {img1, img2, img3};
         }
-
         private void Button_OnClicked(object sender, EventArgs e)
         {
             Device.StartTimer(TimeSpan.FromSeconds(1), () =>
