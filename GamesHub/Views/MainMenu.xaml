@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:GamesHub.ViewModels;assembly=GamesHub"
+             mc:Ignorable="d"
+             x:Class="GamesHub.Views.MainMenu"
+             Title="Games">
+    <ContentPage.BindingContext>
+        <vm:MainMenuViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#1E1E1E"/>
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#121212">
+            <Image Source="GamesHub_Logo.png"/>
+            <Button Text="TicTacToe" Command="{Binding TicTacToeCommand}"/>
+            <Button Text="Reaction" Command="{Binding ReactionCommand}"/>
+            <Button Text="Snake" Command="{Binding SnakeCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

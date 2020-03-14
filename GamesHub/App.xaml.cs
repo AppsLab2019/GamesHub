@@ -1,27 +1,14 @@
-﻿using Xamarin.Forms;
+﻿using GamesHub.Views;
+using Xamarin.Forms;
 
 namespace GamesHub
-{
-    public partial class App : Application
+{ 
+    public partial class App
     {
         public App()
         {
             InitializeComponent();
-
-            MainPage = new AppShell();
-            MainPage.SetValue(NavigationPage.BarBackgroundColorProperty, Color.Black);
-        }
-
-        protected override void OnStart()
-        {
-        }
-
-        protected override void OnSleep()
-        {
-        }
-
-        protected override void OnResume()
-        {
+            MainPage = new  NavigationPage(new MainMenu());
         }
     }
 }
