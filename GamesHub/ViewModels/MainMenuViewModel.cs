@@ -4,11 +4,8 @@ using Xamarin.Forms;
 
 namespace GamesHub.ViewModels
 {
-    class MainMenuViewModel
+    internal class MainMenuViewModel
     {
-        public ICommand TicTacToeCommand { get; }
-        public ICommand ReactionCommand { get; }
-        public ICommand SnakeCommand { get; }
         public MainMenuViewModel()
         {
             TicTacToeCommand = new Command(HandleTicTacToeClick);
@@ -16,19 +13,23 @@ namespace GamesHub.ViewModels
             SnakeCommand = new Command(HandleSnakeClick);
         }
 
+        public ICommand TicTacToeCommand { get; }
+        public ICommand ReactionCommand { get; }
+        public ICommand SnakeCommand { get; }
+
         private void HandleTicTacToeClick()
         {
             ((NavigationPage) ((App) Application.Current).MainPage).PushAsync(new TicTacToe());
-
         }
+
         private void HandleReactionClick()
         {
-            ((NavigationPage)((App)Application.Current).MainPage).PushAsync(new Reaction());
+            ((NavigationPage) ((App) Application.Current).MainPage).PushAsync(new Reaction());
         }
 
         private void HandleSnakeClick()
         {
-            ((NavigationPage)((App)Application.Current).MainPage).PushAsync(new Snake());
+            ((NavigationPage) ((App) Application.Current).MainPage).PushAsync(new Snake());
         }
     }
 }
