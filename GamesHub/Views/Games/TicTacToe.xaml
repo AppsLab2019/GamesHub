@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:GamesHub.ViewModels.Games;assembly=GamesHub"
+             mc:Ignorable="d"
+             x:Class="GamesHub.Views.Games.TicTacToe"
+             Title="TicTacToe">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="ImageButton">
+                <Setter Property="Aspect" Value="Fill" />
+                <Setter Property="BackgroundColor" Value="#FFDBC7" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.BindingContext>
+        <vm:TicTacToeViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#FFDBC7">
+            <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" ColumnSpacing="15"
+                  RowSpacing="15"
+                  BackgroundColor="#FFA15C">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="100" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <ImageButton Grid.Column="0" Grid.Row="0" Source="{Binding FirstSource}"
+                             Command="{Binding ClickCommand}" CommandParameter="0" />
+                <ImageButton Grid.Column="1" Grid.Row="0" Source="{Binding SecondSource}"
+                             Command="{Binding ClickCommand}" CommandParameter="1" />
+                <ImageButton Grid.Column="2" Grid.Row="0" Source="{Binding ThirdSource}"
+                             Command="{Binding ClickCommand}" CommandParameter="2" />
+                <ImageButton Grid.Column="0" Grid.Row="1" Source="{Binding FourthSource}"
+                             Command="{Binding ClickCommand}" CommandParameter="3" />
+                <ImageButton Grid.Column="1" Grid.Row="1" Source="{Binding FifthSource}"
+                             Command="{Binding ClickCommand}" CommandParameter="4" />
+                <ImageButton Grid.Column="2" Grid.Row="1" Source="{Binding SixthSource}"
+                             Command="{Binding ClickCommand}" CommandParameter="5" />
+                <ImageButton Grid.Column="0" Grid.Row="2" Source="{Binding SeventhSource}"
+                             Command="{Binding ClickCommand}" CommandParameter="6" />
+                <ImageButton Grid.Column="1" Grid.Row="2" Source="{Binding EighthSource}"
+                             Command="{Binding ClickCommand}" CommandParameter="7" />
+                <ImageButton Grid.Column="2" Grid.Row="2" Source="{Binding NinthSource}"
+                             Command="{Binding ClickCommand}" CommandParameter="8" />
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

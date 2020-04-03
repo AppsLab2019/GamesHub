@@ -2,7 +2,7 @@
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace GamesHub.ViewModels
+namespace GamesHub.ViewModels.Games
 {
     public sealed class TicTacToeViewModel : INotifyPropertyChanged
     {

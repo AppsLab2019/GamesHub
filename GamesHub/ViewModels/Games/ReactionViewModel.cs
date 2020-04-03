@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace GamesHub.ViewModels
+namespace GamesHub.ViewModels.Games
 {
     internal class ReactionViewModel : INotifyPropertyChanged
     {
