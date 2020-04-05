@@ -38,23 +38,23 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <ImageButton Grid.Column="0" Grid.Row="0" Source="{Binding FirstSource}"
+                <ImageButton Grid.Column="0" Grid.Row="0" Source="{Binding SourceArr[0]}"
                              Command="{Binding ClickCommand}" CommandParameter="0" />
-                <ImageButton Grid.Column="1" Grid.Row="0" Source="{Binding SecondSource}"
+                <ImageButton Grid.Column="1" Grid.Row="0" Source="{Binding SourceArr[1]}"
                              Command="{Binding ClickCommand}" CommandParameter="1" />
-                <ImageButton Grid.Column="2" Grid.Row="0" Source="{Binding ThirdSource}"
+                <ImageButton Grid.Column="2" Grid.Row="0" Source="{Binding SourceArr[2]}"
                              Command="{Binding ClickCommand}" CommandParameter="2" />
-                <ImageButton Grid.Column="0" Grid.Row="1" Source="{Binding FourthSource}"
+                <ImageButton Grid.Column="0" Grid.Row="1" Source="{Binding SourceArr[3]}"
                              Command="{Binding ClickCommand}" CommandParameter="3" />
-                <ImageButton Grid.Column="1" Grid.Row="1" Source="{Binding FifthSource}"
+                <ImageButton Grid.Column="1" Grid.Row="1" Source="{Binding SourceArr[4]}"
                              Command="{Binding ClickCommand}" CommandParameter="4" />
-                <ImageButton Grid.Column="2" Grid.Row="1" Source="{Binding SixthSource}"
+                <ImageButton Grid.Column="2" Grid.Row="1" Source="{Binding SourceArr[5]}"
                              Command="{Binding ClickCommand}" CommandParameter="5" />
-                <ImageButton Grid.Column="0" Grid.Row="2" Source="{Binding SeventhSource}"
+                <ImageButton Grid.Column="0" Grid.Row="2" Source="{Binding SourceArr[6]}"
                              Command="{Binding ClickCommand}" CommandParameter="6" />
-                <ImageButton Grid.Column="1" Grid.Row="2" Source="{Binding EighthSource}"
+                <ImageButton Grid.Column="1" Grid.Row="2" Source="{Binding SourceArr[7]}"
                              Command="{Binding ClickCommand}" CommandParameter="7" />
-                <ImageButton Grid.Column="2" Grid.Row="2" Source="{Binding NinthSource}"
+                <ImageButton Grid.Column="2" Grid.Row="2" Source="{Binding SourceArr[8]}"
                              Command="{Binding ClickCommand}" CommandParameter="8" />
             </Grid>
         </StackLayout>
