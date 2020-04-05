@@ -9,50 +9,73 @@
              mc:Ignorable="d"
              x:Class="GamesHub.Views.BaseGamesListView"
              x:Name="Root"
-             BackgroundColor="#121212">
+             Style="{StaticResource Style.Page}">
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Style TargetType="ui:MaterialCard">
+                <Setter Property="BackgroundColor" Value="{StaticResource Color.Surface}"/>
+                <Setter Property="IsClickable" Value="True"/>
+                <Setter Property="Elevation" Value="2"/>
+                <Setter Property="CornerRadius" Value="10"/>
+            </Style>
+            <Style x:Key="GameDescription" TargetType="ui:MaterialLabel">
+                <Setter Property="TextColor" Value="{StaticResource Color.OnSurface}"/>
+                <Setter Property="FontFamily" Value="{StaticResource FontFamily.OxygenRegular}"/>
+            </Style>
+            <Style x:Key="Header" TargetType="ui:MaterialLabel">
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="FontFamily" Value="{StaticResource FontFamily.PressStart2PRegular}"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="TextColor" Value="{StaticResource Color.OnBackground}"/>
+                <Setter Property="FontSize" Value="Title"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
 
     <ContentView.Content>
         <CollectionView Margin="15"
                         ItemsSource="{Binding Games}">
+            <CollectionView.Header>
+                <ui:MaterialLabel Style="{StaticResource Header}"
+                                  Text="Games"
+                                  Margin="0, 10"/>
+            </CollectionView.Header>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="m:Game">
                     <StackLayout Padding="4">
-                        <ui:MaterialCard HeightRequest="100"
-                                         CornerRadius="10"
-                                         Elevation="2"
-                                         IsClickable="True"
-                                         BackgroundColor="#1E1E1E"
+                        <ui:MaterialCard Padding="20, 15, 20, 15"
                                          ClickCommand="{Binding Source={x:Reference Root}, Path=BindingContext.GameSelectCommand}"
-                                         ClickCommandParameter="{Binding .}">
-                            <Grid ColumnSpacing="20">
+                                         ClickCommandParameter="{Binding Name}">
+                            <Grid ColumnSpacing="20" RowSpacing="0">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="*" />
-                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
 
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
 
                                 <Image Grid.RowSpan="2"
                                        WidthRequest="60"
                                        HeightRequest="60"
+                                       VerticalOptions="Center"
                                        Source="{Binding Image}" />
 
                                 <ui:MaterialLabel Grid.Row="0"
                                                   Grid.Column="1"
                                                   Text="{Binding Name}"
-                                                  TextColor="White"
-                                                  FontSize="Title"
-                                                  VerticalOptions="End" />
+                                                  TextColor="{StaticResource Color.OnPrimary}"
+                                                  FontFamily="{StaticResource FontFamily.OxygenRegular}"
+                                                  FontSize="Title"/>
 
-                                <ui:MaterialLabel
-                                    Grid.Row="1"
-                                    Grid.Column="1"
-                                    Text="{Binding Description}"
-                                    TextColor="#99FFFFFF"
-                                    VerticalOptions="Start" />
+                                <ui:MaterialLabel Style="{StaticResource GameDescription}"
+                                                  Grid.Row="1"
+                                                  Grid.Column="1"
+                                                  LineHeight="1"
+                                                  Text="{Binding Description}"/>
                             </Grid>
                         </ui:MaterialCard>
                     </StackLayout>

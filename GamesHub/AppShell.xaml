@@ -7,16 +7,15 @@
        xmlns:views="clr-namespace:GamesHub.Views;assembly=GamesHub"
        mc:Ignorable="d"
        x:Class="GamesHub.AppShell"
-       FlyoutBehavior="Disabled">
-    <Shell.NavBarIsVisible>False</Shell.NavBarIsVisible>
+       FlyoutBehavior="Disabled"
+       NavBarIsVisible="False">
     <Shell.Resources>
         <ResourceDictionary>
-            <Style x:Key="BaseStyle" TargetType="Element">
-                <Setter Property="Shell.BackgroundColor" Value="#272727" />
-                <Setter Property="Shell.TitleColor" Value="White" />
-                <Setter Property="Shell.TabBarUnselectedColor" Value="#4F4F4F" />
+            <Style TargetType="TabBar">
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource Color.Primary}"/>
+                <Setter Property="Shell.TitleColor" Value="{StaticResource Color.OnPrimary}"/>
+                <Setter Property="Shell.UnselectedColor" Value="#4F4F4F"/>
             </Style>
-            <Style BasedOn="{StaticResource BaseStyle}" TargetType="TabBar" />
         </ResourceDictionary>
     </Shell.Resources>
     <TabBar>

@@ -5,7 +5,8 @@
         public App()
         {
             InitializeComponent();
-            MainPage = new AppShell();
+            MainPage = new AppShell(); 
+            XF.Material.Forms.Material.Init(this, "Material.Configuration");
         }
     }
 }

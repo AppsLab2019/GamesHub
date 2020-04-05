@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace GamesHub.ViewModels.Games
@@ -9,6 +10,9 @@ namespace GamesHub.ViewModels.Games
     {
         private readonly Random _rnd = new Random();
         private double _reactTime;
+        private readonly Color _startButtonColor = Color.Black;
+        private readonly Color _startButtonEventColor = Color.LimeGreen;
+        
 
         public ReactionViewModel()
         {
@@ -29,7 +33,7 @@ namespace GamesHub.ViewModels.Games
 
         private async void HandlePlayerButtonClicked(string player)
         {
-            if (StartButtonColor != Color.LimeGreen) return;
+            if (StartButtonColor != _startButtonEventColor) return;
             await Application.Current.MainPage.DisplayAlert("Congratulations", $"Player{player} was faster!", "Ok");
 
             Reset();
@@ -46,7 +50,7 @@ namespace GamesHub.ViewModels.Games
             _reactTime = _rnd.Next(3, 8);
             Device.StartTimer(TimeSpan.FromSeconds(_reactTime), () =>
             {
-                StartButtonColor = Color.LimeGreen;
+                StartButtonColor = _startButtonEventColor;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(default));
                 return false;
             });
@@ -54,7 +58,7 @@ namespace GamesHub.ViewModels.Games
 
         private void Reset()
         {
-            StartButtonColor = Color.White;
+            StartButtonColor = _startButtonColor;
             StartButtonText = "Start";
             StartButtonIsEnabled = true;
         }

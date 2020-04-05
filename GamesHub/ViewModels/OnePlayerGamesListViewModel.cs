@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows.Input;
 using GamesHub.Models;
-using GamesHub.Views.Games;
 using Xamarin.Forms;
 
 namespace GamesHub.ViewModels
@@ -12,17 +10,16 @@ namespace GamesHub.ViewModels
         public OnePlayerGamesListViewModel()
         {
             Games = _games;
-            GameSelectCommand = new Command<Game>(HandleGameSelect);
+            GameSelectCommand = new Command<string>(HandleGameSelect);
         }
 
         public List<Game> Games { get; }
 
         public ICommand GameSelectCommand { get; }
 
-        private static async void HandleGameSelect(Game game)
+        private static async void HandleGameSelect(string page)
         {
-            var page = (Page) Activator.CreateInstance(game.GameViewType);
-            await Shell.Current.Navigation.PushAsync(page);
+            await Shell.Current.GoToAsync(page);
         }
         private readonly List<Game> _games = new List<Game>
         {
@@ -30,8 +27,7 @@ namespace GamesHub.ViewModels
             {
                 Name = "Snake",
                 Description = "So who's the mastermind? Compare with your friends and find out!",
-                Image = "circle.png",
-                GameViewType = typeof(Snake)
+                Image = "circle.png"
             }
         };
     }

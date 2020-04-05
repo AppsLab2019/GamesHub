@@ -5,11 +5,23 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:GamesHub.ViewModels.Games;assembly=GamesHub"
+             xmlns:ui="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
              mc:Ignorable="d"
-             x:Class="GamesHub.Views.Games.Reaction">
+             x:Class="GamesHub.Views.Games.Reaction"
+             Style="{StaticResource Style.Page}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="PlayerButton" TargetType="ui:MaterialButton">
+                <Setter Property="BackgroundColor" Value="{StaticResource Color.Background}"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.BindingContext>
         <vm:ReactionViewModel />
     </ContentPage.BindingContext>
+
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -17,19 +29,22 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Button Text="Player1"
-                    Command="{Binding PlayerCommand}"
-                    CommandParameter="1"
-                    Grid.Row="0" />
-            <Button Text="{Binding StartButtonText}"
-                    Command="{Binding StartCommand}"
-                    BackgroundColor="{Binding StartButtonColor}"
-                    Grid.Row="1"
-                    IsEnabled="{Binding StartButtonIsEnabled}" />
-            <Button Text="Player2"
-                    Command="{Binding PlayerCommand}"
-                    CommandParameter="2"
-                    Grid.Row="2" />
+            <ui:MaterialButton Text="Player 1"
+                               Rotation="180"
+                               Style="{StaticResource PlayerButton}"
+                               Command="{Binding PlayerCommand}"
+                               CommandParameter="1"
+                               Grid.Row="0" />
+            <ui:MaterialButton Text="{Binding StartButtonText}"
+                               Command="{Binding StartCommand}"
+                               BackgroundColor="{Binding StartButtonColor}"
+                               Grid.Row="1"
+                               IsEnabled="{Binding StartButtonIsEnabled}" />
+            <ui:MaterialButton Text="Player 2"
+                               Style="{StaticResource PlayerButton}"
+                               Command="{Binding PlayerCommand}"
+                               CommandParameter="2"
+                               Grid.Row="2" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

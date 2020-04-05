@@ -8,6 +8,5 @@ namespace GamesHub.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public ImageSource Image { get; set; }
-        public Type GameViewType { get; set; }
     }
 }

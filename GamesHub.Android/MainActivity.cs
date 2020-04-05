@@ -21,7 +21,6 @@ namespace GamesHub.Droid
             XF.Material.Droid.Material.Init(this, savedInstanceState);
 
             LoadApplication(new App());
-            Window.SetStatusBarColor(Android.Graphics.Color.Black);
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {

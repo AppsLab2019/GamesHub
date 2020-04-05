@@ -7,23 +7,27 @@
              xmlns:vm="clr-namespace:GamesHub.ViewModels.Games;assembly=GamesHub"
              mc:Ignorable="d"
              x:Class="GamesHub.Views.Games.TicTacToe"
-             Title="TicTacToe">
+             Style="{StaticResource Style.Page}">
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="ImageButton">
                 <Setter Property="Aspect" Value="Fill" />
-                <Setter Property="BackgroundColor" Value="#FFDBC7" />
+                <Setter Property="BackgroundColor" Value="{StaticResource Color.Background}" />
+                <Setter Property="CornerRadius" Value="0"/>
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
+
     <ContentPage.BindingContext>
         <vm:TicTacToeViewModel />
     </ContentPage.BindingContext>
+
     <ContentPage.Content>
-        <StackLayout BackgroundColor="#FFDBC7">
+        <StackLayout>
             <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" ColumnSpacing="15"
                   RowSpacing="15"
-                  BackgroundColor="#FFA15C">
+                  BackgroundColor="{StaticResource Color.Surface}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100" />
                     <RowDefinition Height="100" />
