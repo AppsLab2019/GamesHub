@@ -1,2 +1,2 @@
 # GamesHub
-Zábavná aplikácia plná hier pre viac hráčov.
+Zábavná aplikácia plná hier pre jedného alebo dvoch hráčov.
