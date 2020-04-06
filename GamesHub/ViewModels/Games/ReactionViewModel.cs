@@ -9,6 +9,7 @@ namespace GamesHub.ViewModels.Games
     {
         private readonly Random _rnd = new Random();
         private double _reactTime;
+        private DateTime startTime;
         private readonly Color _startButtonColor = Color.Black;
         private readonly Color _startButtonEventColor = Color.LimeGreen;
         
@@ -33,7 +34,7 @@ namespace GamesHub.ViewModels.Games
         private async void HandlePlayerButtonClicked(string player)
         {
             if (StartButtonColor != _startButtonEventColor) return;
-            await Application.Current.MainPage.DisplayAlert("Congratulations", $"Player{player} was faster!", "Ok");
+            await Application.Current.MainPage.DisplayAlert("Congratulations", $"Player{player} was faster. Your reaction time was {ReactTime()} milliseconds!", "Ok");
 
             Reset();
 
@@ -50,6 +51,7 @@ namespace GamesHub.ViewModels.Games
             Device.StartTimer(TimeSpan.FromSeconds(_reactTime), () =>
             {
                 StartButtonColor = _startButtonEventColor;
+                startTime = DateTime.Now;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(default));
                 return false;
             });
@@ -60,6 +62,12 @@ namespace GamesHub.ViewModels.Games
             StartButtonColor = _startButtonColor;
             StartButtonText = "Start";
             StartButtonIsEnabled = true;
+        }
+
+        private int ReactTime()
+        {
+            var totalTime = DateTime.Now.Subtract(startTime).TotalMilliseconds;
+            return (int) totalTime;
         }
     }
 }
