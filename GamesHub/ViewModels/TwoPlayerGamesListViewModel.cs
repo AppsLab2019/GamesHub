@@ -6,7 +6,7 @@ using Xamarin.Forms;
 namespace GamesHub.ViewModels
 {
     public sealed class TwoPlayerGamesListViewModel
-    {
+    { 
         public TwoPlayerGamesListViewModel()
         {
             Games = _games;
@@ -32,6 +32,12 @@ namespace GamesHub.ViewModels
             new Game
             {
                 Name = "Reaction",
+                Description = "So who's the mastermind? Compare with your friends and find out!",
+                Image = "circle.png"
+            },
+            new Game
+            {
+                Name = "Math",
                 Description = "So who's the mastermind? Compare with your friends and find out!",
                 Image = "circle.png"
             }

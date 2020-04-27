@@ -9,7 +9,7 @@ namespace GamesHub.ViewModels.Games
     {
         private readonly Random _rnd = new Random();
         private double _reactTime;
-        private DateTime startTime;
+        private DateTime _startTime;
         private readonly Color _startButtonColor = Color.Black;
         private readonly Color _startButtonEventColor = Color.LimeGreen;
         
@@ -51,7 +51,7 @@ namespace GamesHub.ViewModels.Games
             Device.StartTimer(TimeSpan.FromSeconds(_reactTime), () =>
             {
                 StartButtonColor = _startButtonEventColor;
-                startTime = DateTime.Now;
+                _startTime = DateTime.Now;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(default));
                 return false;
             });
@@ -66,7 +66,7 @@ namespace GamesHub.ViewModels.Games
 
         private int ReactTime()
         {
-            var totalTime = DateTime.Now.Subtract(startTime).TotalMilliseconds;
+            var totalTime = DateTime.Now.Subtract(_startTime).TotalMilliseconds;
             return (int) totalTime;
         }
     }
