@@ -17,7 +17,7 @@ namespace GamesHub.ViewModels.Games
         public ICommand SelectedUpgradeCommand { get; }
         public ICommand ClickCommand { get; }
 
-        public int Points { get; set; }
+        public long Points { get; set; }
 
         public ObservableCollection<ClickerUpgrade> Upgrades { get; private set; }
         private List<ClickerUpgrade> _pointUpgrades;
@@ -30,7 +30,7 @@ namespace GamesHub.ViewModels.Games
             if (!savedProperties.ContainsKey("clicker_points"))
                 savedProperties["clicker_points"] = 0;
 
-            Points = (int) savedProperties["clicker_points"];
+            Points = (long) savedProperties["clicker_points"];
 
             CreateUpgrades();
 
@@ -69,8 +69,10 @@ namespace GamesHub.ViewModels.Games
             if (SelectedUpgrade is null)
                 return;
 
-            if(SelectedUpgrade.Tier >= SelectedUpgrade.MaxTier)
+            if (SelectedUpgrade.Tier >= SelectedUpgrade.MaxTier)
+            {
                 return;
+            }
 
             if (Points >= SelectedUpgrade.Price)
             {
@@ -98,40 +100,40 @@ namespace GamesHub.ViewModels.Games
                 Title = "Multi Click",
                 ImageUrl = "x.png",
                 BasePrice = 50,
-                BaseGain = 2,
+                BaseGain = 1,
                 MaxTier = 5
             };
             _pointUpgrades.Add(new ClickerUpgrade
             {
-                Title = "Sovik Farma",
+                Title = "Silver Farm",
                 ImageUrl = "circle.png",
-                BasePrice = 10,
-                BaseGain = 5,
-                MaxTier = 10
-            });
-            _pointUpgrades.Add(new ClickerUpgrade
-            {
-                Title = "Sovik Farma2",
-                ImageUrl = "circle.png",
-                BasePrice = 10,
-                BaseGain = 5,
-                MaxTier = 10
-            });
-            _pointUpgrades.Add(new ClickerUpgrade
-            {
-                Title = "Sovik Farma3",
-                ImageUrl = "circle.png",
-                BasePrice = 10,
-                BaseGain = 5,
-                MaxTier = 10
-            });
-            _pointUpgrades.Add(new ClickerUpgrade
-            {
-                Title = "Sovik Farma4",
-                ImageUrl = "circle.png",
-                BasePrice = 10,
+                BasePrice = 100,
                 BaseGain = 1,
                 MaxTier = 10
+            });
+            _pointUpgrades.Add(new ClickerUpgrade
+            {
+                Title = "Gold Farm",
+                ImageUrl = "circle.png",
+                BasePrice = 1000,
+                BaseGain = 2,
+                MaxTier = 10
+            });
+            _pointUpgrades.Add(new ClickerUpgrade
+            {
+                Title = "Platinum Farm",
+                ImageUrl = "circle.png",
+                BasePrice = 5000,
+                BaseGain = 3,
+                MaxTier = 10
+            });
+            _pointUpgrades.Add(new ClickerUpgrade
+            {
+                Title = "Diamond Farm",
+                ImageUrl = "circle.png",
+                BasePrice = 10000,
+                BaseGain = 5,
+                MaxTier = 2
             });
 
             Upgrades.Add(_multiClickUpgrade);

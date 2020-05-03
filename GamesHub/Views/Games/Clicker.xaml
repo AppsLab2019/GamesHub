@@ -5,7 +5,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:GamesHub.ViewModels.Games;assembly=GamesHub"
-             xmlns:m="clr-namespace:GamesHub.Models;assembly=GamesHub"
+             xmlns:m="clr-namespace:GamesHub.Models;assembly=GamesHub" 
+             xmlns:converters="clr-namespace:GamesHub.Converters"
              mc:Ignorable="d"
              x:Class="GamesHub.Views.Games.Clicker">
 
@@ -13,14 +14,20 @@
         <vm:ClickerViewModel/>
     </ContentPage.BindingContext>
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:IsUpgradeMaxTierConverter x:Key="Converter.UpgradeMaxTier"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="2.5*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <ImageButton Source="GamesHub_SuperiorLogo.png" Command="{Binding ClickCommand}" BackgroundColor="Red" CornerRadius="0"/>
-            <Label Grid.Row="0" HorizontalOptions="Center" Text="{Binding Points}"/>
+            <ImageButton Command="{Binding ClickCommand}" BackgroundColor="#121212" CornerRadius="0"/>
+            <Label Grid.Row="0" HorizontalOptions="Center" Text="{Binding Points}" TextColor="White"/>
             <CollectionView Grid.Row="1" 
                             ItemsSource="{Binding Upgrades}"
                             SelectionMode="Single"
@@ -35,7 +42,7 @@
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="m:ClickerUpgrade">
-                        <StackLayout Padding="6">
+                        <StackLayout Padding="6" BackgroundColor="Black">
                             <Frame HasShadow="True" Padding="10" CornerRadius="10">
                                 <Grid>
                                     <Grid.RowDefinitions>
@@ -56,11 +63,27 @@
 
                                     <Label Grid.Row="2" 
                                            Text="{Binding Tier}"
-                                           HorizontalOptions="Center"/>
+                                           HorizontalOptions="Center">
+                                        <Label.Triggers>
+                                            <DataTrigger Binding="{Binding Converter={StaticResource Converter.UpgradeMaxTier}}"
+                                                         TargetType="Label"
+                                                         Value="True">
+                                                <Setter Property="Text" Value="Max Tier"/>
+                                            </DataTrigger>
+                                        </Label.Triggers>
+                                    </Label>
 
                                     <Label Grid.Row="3"
                                            Text="{Binding Price}"
-                                           HorizontalOptions="Center"/>
+                                           HorizontalOptions="Center">
+                                        <Label.Triggers>
+                                            <DataTrigger Binding="{Binding Converter={StaticResource Converter.UpgradeMaxTier}}"
+                                                         TargetType="Label"
+                                                         Value="True">
+                                                <Setter Property="IsVisible" Value="False"/>
+                                            </DataTrigger>
+                                        </Label.Triggers>
+                                    </Label>
                                 </Grid>
                             </Frame>
                         </StackLayout>

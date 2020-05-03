@@ -17,6 +17,7 @@ namespace GamesHub
             Routing.RegisterRoute("Reaction", typeof(Reaction));
             Routing.RegisterRoute("Snake", typeof(Snake));
             Routing.RegisterRoute("Math", typeof(Math));
+            Routing.RegisterRoute("Clicker", typeof(Clicker));
         }
     }
 }

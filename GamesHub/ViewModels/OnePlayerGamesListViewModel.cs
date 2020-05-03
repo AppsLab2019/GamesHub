@@ -28,6 +28,12 @@ namespace GamesHub.ViewModels
                 Name = "Snake",
                 Description = "So who's the mastermind? Compare with your friends and find out!",
                 Image = "circle.png"
+            },
+            new Game
+            {
+                Name = "Clicker",
+                Description = "So who's the mastermind? Compare with your friends and find out!",
+                Image = "circle.png"
             }
         };
     }
