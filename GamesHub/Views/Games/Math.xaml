@@ -24,6 +24,12 @@
                 <Setter Property="BackgroundColor" Value="#1E1E1E" />
                 <Setter Property="Command" Value="{Binding AnswerCommand}" />
             </Style>
+            <Style x:Key="Score" TargetType="ui:MaterialLabel">
+                <Setter Property="TextColor" Value="{StaticResource Color.OnSurface}" />
+                <Setter Property="FontSize" Value="50" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -35,6 +41,8 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="150" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="150" />
@@ -49,41 +57,53 @@
                                Grid.Column="0"
                                Rotation="180"
                                Style="{StaticResource AnswerButton}"
-                               CommandParameter="0" />
+                               CommandParameter="0 0" />
             <ui:MaterialButton Text="{Binding OperationAnswers[1]}"
                                Grid.Row="0"
                                Grid.Column="1"
                                Rotation="180"
                                Style="{StaticResource AnswerButton}"
-                               CommandParameter="1" />
+                               CommandParameter="0 1" />
             <ui:MaterialButton Text="{Binding OperationAnswers[2]}"
                                Grid.Row="0"
                                Grid.Column="2"
                                Rotation="180"
                                Style="{StaticResource AnswerButton}"
-                               CommandParameter="2" />
-            <ui:MaterialLabel Grid.Row="1"
+                               CommandParameter="0 2" />
+            <ui:MaterialLabel Grid.Row="2"
                               Grid.ColumnSpan="3"
                               Grid.Column="0"
                               Rotation="180" />
-            <ui:MaterialLabel Grid.Row="2"
+            <ui:MaterialLabel Style="{StaticResource Score}"
+                              Text="{Binding Player2Score}"
+                              Rotation="180"
+                              Grid.Row="1"
+                              Grid.ColumnSpan="3"
+                              Grid.Column="0" />
+            <ui:MaterialLabel Style="{StaticResource Score}"
+                              Grid.Row="4"
+                              Text="{Binding Player1Score}"
+                              Grid.ColumnSpan="3"
+                              Grid.Column="0" />
+            <ui:MaterialLabel Grid.Row="3"
                               Grid.ColumnSpan="3"
                               Grid.Column="0" />
             <ui:MaterialButton Text="{Binding OperationAnswers[0]}"
                                Style="{StaticResource AnswerButton}"
-                               Grid.Row="3"
+                               Grid.Row="5"
                                Grid.Column="0"
-                               CommandParameter="0" />
+                               Command="{Binding AnswerCommand}"
+                               CommandParameter="1 0" />
             <ui:MaterialButton Text="{Binding OperationAnswers[1]}"
                                Style="{StaticResource AnswerButton}"
-                               Grid.Row="3"
+                               Grid.Row="5"
                                Grid.Column="1"
-                               CommandParameter="1" />
+                               CommandParameter="1 1" />
             <ui:MaterialButton Text="{Binding OperationAnswers[2]}"
                                Style="{StaticResource AnswerButton}"
-                               Grid.Row="3"
+                               Grid.Row="5"
                                Grid.Column="2"
-                               CommandParameter="2" />
+                               CommandParameter="1 2" />
 
         </Grid>
     </ContentPage.Content>
