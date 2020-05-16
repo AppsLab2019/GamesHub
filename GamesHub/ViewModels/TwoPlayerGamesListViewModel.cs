@@ -26,20 +26,20 @@ namespace GamesHub.ViewModels
             new Game
             {
                 Name = "Tic-Tac-Toe",
-                Description = "So who's the mastermind? Compare with your friends and find out!",
-                Image = "circle.png"
+                Description = "Who's the mastermind? Play with your friend and find out!",
+                Image = "tictactoe_icon.png"
             },
             new Game
             {
                 Name = "Reaction",
-                Description = "So who's the mastermind? Compare with your friends and find out!",
-                Image = "circle.png"
+                Description = "Who's faster? Play with your friend and find out!",
+                Image = "reaction_icon.png"
             },
             new Game
             {
                 Name = "Math",
-                Description = "So who's the mastermind? Compare with your friends and find out!",
-                Image = "circle.png"
+                Description = "Who's better in math? First to 10 wins!",
+                Image = "math_icon.png"
             }
         };
     }

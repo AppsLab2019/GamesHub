@@ -25,7 +25,6 @@
                 <Setter Property="Command" Value="{Binding AnswerCommand}" />
             </Style>
             <Style x:Key="Score" TargetType="ui:MaterialLabel">
-                <Setter Property="TextColor" Value="{StaticResource Color.OnSurface}" />
                 <Setter Property="FontSize" Value="50" />
                 <Setter Property="HorizontalTextAlignment" Value="Center" />
                 <Setter Property="VerticalTextAlignment" Value="Center" />
@@ -75,6 +74,7 @@
                               Grid.Column="0"
                               Rotation="180" />
             <ui:MaterialLabel Style="{StaticResource Score}"
+                              TextColor="#448AFF"
                               Text="{Binding Player2Score}"
                               Rotation="180"
                               Grid.Row="1"
@@ -82,6 +82,7 @@
                               Grid.Column="0" />
             <ui:MaterialLabel Style="{StaticResource Score}"
                               Grid.Row="4"
+                              TextColor="#FF5252"
                               Text="{Binding Player1Score}"
                               Grid.ColumnSpan="3"
                               Grid.Column="0" />

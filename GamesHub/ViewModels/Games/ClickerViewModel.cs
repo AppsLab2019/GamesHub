@@ -17,7 +17,7 @@ namespace GamesHub.ViewModels.Games
         public ICommand SelectedUpgradeCommand { get; }
         public ICommand ClickCommand { get; }
 
-        public long Points { get; set; }
+        public int Points { get; set; }
 
         public ObservableCollection<ClickerUpgrade> Upgrades { get; private set; }
         private List<ClickerUpgrade> _pointUpgrades;
@@ -30,7 +30,7 @@ namespace GamesHub.ViewModels.Games
             if (!savedProperties.ContainsKey("clicker_points"))
                 savedProperties["clicker_points"] = 0;
 
-            Points = (long) savedProperties["clicker_points"];
+            Points = (int) savedProperties["clicker_points"];
 
             CreateUpgrades();
 

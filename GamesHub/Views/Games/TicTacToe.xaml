@@ -12,7 +12,6 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="ImageButton">
-                <Setter Property="Aspect" Value="Fill" />
                 <Setter Property="BackgroundColor" Value="{StaticResource Color.Background}" />
                 <Setter Property="CornerRadius" Value="0"/>
             </Style>
@@ -27,7 +26,7 @@
         <StackLayout>
             <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" ColumnSpacing="15"
                   RowSpacing="15"
-                  BackgroundColor="{StaticResource Color.Surface}">
+                  BackgroundColor="{StaticResource Color.Primary}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100" />
                     <RowDefinition Height="100" />

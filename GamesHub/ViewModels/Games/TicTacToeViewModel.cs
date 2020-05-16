@@ -6,8 +6,8 @@ namespace GamesHub.ViewModels.Games
 {
     public sealed class TicTacToeViewModel : INotifyPropertyChanged
     {
-        private readonly ImageSource _imageCircle = "circle.png";
-        private readonly ImageSource _imageCross = "x.png";
+        private readonly ImageSource _imageCircle = "tictactoe_circle.png";
+        private readonly ImageSource _imageCross = "tictactoe_cross.png";
 
         public ImageSource[] SourceArr { get; }
         private int _turn;
