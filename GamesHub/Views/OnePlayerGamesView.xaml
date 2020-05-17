@@ -10,7 +10,7 @@
              x:Class="GamesHub.Views.OnePlayerGamesListView">
 
     <ContentPage.BindingContext>
-        <vm:OnePlayerGamesListViewModel />
+        <vm:OnePlayerGamesViewModel />
     </ContentPage.BindingContext>
 
     <ContentPage.Content>

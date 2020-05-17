@@ -5,9 +5,9 @@ using Xamarin.Forms;
 
 namespace GamesHub.ViewModels
 {
-    public sealed class TwoPlayerGamesListViewModel
+    public sealed class TwoPlayerGamesViewModel
     { 
-        public TwoPlayerGamesListViewModel()
+        public TwoPlayerGamesViewModel()
         {
             Games = _games;
             GameSelectCommand = new Command<string>(HandleGameSelect);
