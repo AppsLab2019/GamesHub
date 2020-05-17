@@ -74,7 +74,7 @@
                               Grid.Column="0"
                               Rotation="180" />
             <ui:MaterialLabel Style="{StaticResource Score}"
-                              TextColor="#448AFF"
+                              TextColor="{StaticResource Color.PlayerBlue}"
                               Text="{Binding Player2Score}"
                               Rotation="180"
                               Grid.Row="1"
@@ -82,7 +82,7 @@
                               Grid.Column="0" />
             <ui:MaterialLabel Style="{StaticResource Score}"
                               Grid.Row="4"
-                              TextColor="#FF5252"
+                              TextColor="{StaticResource Color.PlayerRed}"
                               Text="{Binding Player1Score}"
                               Grid.ColumnSpan="3"
                               Grid.Column="0" />

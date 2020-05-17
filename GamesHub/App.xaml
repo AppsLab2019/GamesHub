@@ -38,6 +38,8 @@
         <Color x:Key="Color.OnBackground">White</Color>
         <Color x:Key="Color.Surface">#1E1E1E</Color>
         <Color x:Key="Color.OnSurface">#99FFFFFF</Color>
+        <Color x:Key="Color.PlayerRed">#FF5252</Color>
+        <Color x:Key="Color.PlayerBlue">#448AFF</Color>
 
         <mtrl:MaterialColorConfiguration x:Key="Material.Color"
                                          Primary="{StaticResource Color.Primary}"
