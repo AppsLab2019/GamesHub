@@ -1,6 +1,6 @@
-﻿using System.ComponentModel;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using Xamarin.Forms;
+using XF.Material.Forms.UI.Dialogs;
 
 namespace GamesHub.ViewModels.Games
 {
@@ -26,7 +26,7 @@ namespace GamesHub.ViewModels.Games
             var index = int.Parse(btnIndex);
             if (SourceArr[index] != null) return;
             SourceArr[index] = _turn++ % 2 == 1 ? _imageCircle : _imageCross;
-            HandleWin();
+            HandleWin(GetWinner());
             RaiseAllPropertiesChanged();
         }
 
@@ -56,18 +56,20 @@ namespace GamesHub.ViewModels.Games
             return null;
         }
 
-        private async void HandleWin()
+        private async void HandleWin(ImageSource result)
         {
-            if (GetWinner() == null && _turn == 10)
+            var player = result ==_imageCircle ? "Circle" : "Cross";
+            if (result == null && _turn == 10)
             {
-                await Application.Current.MainPage.DisplayAlert("Congratulations", "It's a draw", "Ok");
+                await MaterialDialog.Instance.ConfirmAsync("Well that happened...",
+                    "Draw", "Got It", string.Empty, BasicDialog);
                 Reset();
             }
+            if (result == null) return;
 
-            if (GetWinner() == null) return;
-
-            await Application.Current.MainPage.DisplayAlert("Congratulations",
-                $"Player {GetWinner().ToString().Replace("File: ", "").Replace(".png", "")} won!", "Ok");
+            var configuration = player.Equals("Circle") ? PlayerBlueWinDialog : PlayerRedWinDialog;
+            await MaterialDialog.Instance.ConfirmAsync($"Player {player} Won!",
+                "Congratulations", "Got It", string.Empty, configuration);
             Reset();
         }
 

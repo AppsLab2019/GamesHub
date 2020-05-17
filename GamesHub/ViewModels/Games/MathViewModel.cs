@@ -1,8 +1,9 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using XF.Material.Forms.UI.Dialogs;
 
 namespace GamesHub.ViewModels.Games
 {
@@ -12,8 +13,8 @@ namespace GamesHub.ViewModels.Games
         private readonly Random _random = new Random();
         private Operations _operation;
         private int _result;
-        private int _player1Score;
-        private int _player2Score;
+        private int _playerRedScore;
+        private int _playerBlueScore;
 
         public MathViewModel()
         {
@@ -25,9 +26,9 @@ namespace GamesHub.ViewModels.Games
         public string Operation { get; private set; }
         public int[] OperationAnswers { get; }
         public ICommand AnswerCommand { get; }
-        public int Player1Score { get; private set; }
+        public int PlayerRedScore { get; private set; }
 
-        public int Player2Score { get;  private set; }
+        public int PlayerBlueScore { get;  private set; }
         private void InitializeGame()
         {
             GenerateMathProblem();
@@ -40,10 +41,10 @@ namespace GamesHub.ViewModels.Games
             var answerIndex = int.Parse(indexes[1]);
 
             if (player == 1)
-                ManageScore(ref _player1Score, OperationAnswers[answerIndex]);
+                ManageScore(ref _playerRedScore, OperationAnswers[answerIndex]);
             else
-                ManageScore(ref _player2Score, OperationAnswers[answerIndex]);
-            NextRound();
+                ManageScore(ref _playerBlueScore, OperationAnswers[answerIndex]);
+            NextRoundAndCheckForWinner();
         }
 
         private void ManageScore(ref int score, int answer)
@@ -52,8 +53,9 @@ namespace GamesHub.ViewModels.Games
                 score++;
             else if (score > 0)
                 score--;
-            Player1Score = _player1Score;
-            Player2Score = _player2Score;
+            PlayerRedScore = _playerRedScore;
+            PlayerBlueScore = _playerBlueScore;
+            RaiseAllPropertiesChanged();
         }
         private void GenerateMathProblem()
         {
@@ -84,17 +86,26 @@ namespace GamesHub.ViewModels.Games
                 }
             }
         }
-        private void NextRound()
+        private async void NextRoundAndCheckForWinner()
         {
-            if(_player1Score == 10 || _player2Score == 10)
-                GameEnd();
+            if(_playerRedScore == 10)
+                await HandleGameEnd("Red");
+            else if(_playerBlueScore == 10)
+                await HandleGameEnd("Blue");
             InitializeGame();
             RaiseAllPropertiesChanged();
         }
 
-        private void GameEnd()
+        private async Task HandleGameEnd(string player)
         {
+            var configuration = player == "Red" ? PlayerRedWinDialog : PlayerBlueWinDialog;
+            await MaterialDialog.Instance.ConfirmAsync($"Player {player} Won!",
+                "Congratulations", "Got It", string.Empty, configuration);
 
+            PlayerBlueScore = 0;
+            PlayerRedScore = 0;
+            _playerBlueScore = 0;
+            _playerRedScore = 0;
         }
 
         private void Addition(int firstNumber, int secondNumber, int thirdNumber)
