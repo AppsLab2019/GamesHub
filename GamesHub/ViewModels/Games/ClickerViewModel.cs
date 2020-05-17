@@ -9,10 +9,8 @@ using Xamarin.Forms;
 
 namespace GamesHub.ViewModels.Games
 {
-    public class ClickerViewModel : INotifyPropertyChanged
+    public class ClickerViewModel : BaseViewModel   
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
         public ClickerUpgrade SelectedUpgrade { get; set; }
         public ICommand SelectedUpgradeCommand { get; }
         public ICommand ClickCommand { get; }
@@ -59,7 +57,7 @@ namespace GamesHub.ViewModels.Games
                 savedProperties["clicker_last_update"] = DateTime.Now;
 
                 Application.Current.SavePropertiesAsync();
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Points)));
+                OnPropertyChanged(nameof(Points));
                 return true;
             });
         }
@@ -81,13 +79,13 @@ namespace GamesHub.ViewModels.Games
             }
 
             SelectedUpgrade = null;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(default));
+            RaiseAllPropertiesChanged();
         }
 
         private void HandleClick()
         {
             Points += _multiClickUpgrade.Gain + 1;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Points)));
+            OnPropertyChanged(nameof(Points));
         }
 
         private void CreateUpgrades()

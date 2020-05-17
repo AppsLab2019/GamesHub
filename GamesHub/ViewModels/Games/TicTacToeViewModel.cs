@@ -4,7 +4,7 @@ using Xamarin.Forms;
 
 namespace GamesHub.ViewModels.Games
 {
-    public sealed class TicTacToeViewModel : INotifyPropertyChanged
+    public sealed class TicTacToeViewModel : BaseViewModel
     {
         private readonly ImageSource _imageCircle = "tictactoe_circle.png";
         private readonly ImageSource _imageCross = "tictactoe_cross.png";
@@ -21,17 +21,13 @@ namespace GamesHub.ViewModels.Games
 
         public ICommand ClickCommand { get; }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
         private void HandleClick(string btnIndex)
         {
             var index = int.Parse(btnIndex);
             if (SourceArr[index] != null) return;
             SourceArr[index] = _turn++ % 2 == 1 ? _imageCircle : _imageCross;
-
             HandleWin();
-
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(default));
+            RaiseAllPropertiesChanged();
         }
 
         private ImageSource GetWinner()
@@ -80,7 +76,7 @@ namespace GamesHub.ViewModels.Games
             _turn = 1;
             for (var i = 0; i < SourceArr.Length; i++)
                 SourceArr[i] = null;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(default));
+            RaiseAllPropertiesChanged();
         }
     }
 }

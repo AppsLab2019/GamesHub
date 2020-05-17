@@ -6,7 +6,7 @@ using Xamarin.Forms;
 
 namespace GamesHub.ViewModels.Games
 {
-    public sealed class MathViewModel : INotifyPropertyChanged
+    public sealed class MathViewModel : BaseViewModel
     {
         private readonly int[] _operationNumbers = new int[3];
         private readonly Random _random = new Random();
@@ -28,9 +28,6 @@ namespace GamesHub.ViewModels.Games
         public int Player1Score { get; private set; }
 
         public int Player2Score { get;  private set; }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
         private void InitializeGame()
         {
             GenerateMathProblem();
@@ -92,7 +89,7 @@ namespace GamesHub.ViewModels.Games
             if(_player1Score == 10 || _player2Score == 10)
                 GameEnd();
             InitializeGame();
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(default));
+            RaiseAllPropertiesChanged();
         }
 
         private void GameEnd()
