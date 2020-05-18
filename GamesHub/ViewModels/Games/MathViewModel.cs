@@ -76,7 +76,7 @@ namespace GamesHub.ViewModels.Games
                 for (var j = 0; j < 99; j++)
                 {
                     var wrongAnswer = 0;
-                    if (_random.Next(0, 1) == 1)
+                    if (_random.Next(0, 2) == 1)
                         wrongAnswer = _result + _random.Next(0, 5);
                     else
                         wrongAnswer = _result - _random.Next(0, 5);
