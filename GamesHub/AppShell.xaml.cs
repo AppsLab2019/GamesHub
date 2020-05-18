@@ -18,6 +18,8 @@ namespace GamesHub
             Routing.RegisterRoute("Snake", typeof(Snake));
             Routing.RegisterRoute("Math", typeof(Math));
             Routing.RegisterRoute("Clicker", typeof(Clicker));
+            Routing.RegisterRoute("Mines", typeof(Mines));
+            Routing.RegisterRoute("Memory Game", typeof(Memory));
         }
     }
 }

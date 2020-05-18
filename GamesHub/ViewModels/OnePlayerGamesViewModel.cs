@@ -34,6 +34,18 @@ namespace GamesHub.ViewModels
                 Name = "Clicker",
                 Description = "Do you feel like you aren't clicking enough? Then click here you won't regret it!",
                 Image = "clicker_icon.png"
+            },
+            new Game
+            {
+                Name = "Mines",
+                Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                Image = ""
+            },
+            new Game
+            {
+                Name = "Memory Game",
+                Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                Image = ""
             }
         };
     }
