@@ -1,67 +1,61 @@
 ﻿using System;
-using System.ComponentModel;
+using System.Diagnostics;
 using System.Windows.Input;
 using Xamarin.Forms;
+using XF.Material.Forms.UI.Dialogs;
+using static System.String;
 
 namespace GamesHub.ViewModels.Games
 {
     internal class ReactionViewModel : BaseViewModel
-    {
-        private readonly Random _rnd = new Random();
-        private double _reactTime;
-        private DateTime _startTime;
-        private readonly Color _startButtonColor = Color.Black;
-        private readonly Color _startButtonEventColor = Color.LimeGreen;
-        
-
-        public ReactionViewModel()
-        {
-            StartCommand = new Command(HandleStartButtonClicked);
-            PlayerCommand = new Command<string>(HandlePlayerButtonClicked);
-            Reset();
-        }
-
-        public ICommand StartCommand { get; }
-        public ICommand PlayerCommand { get; }
-        public Color StartButtonColor { get; private set; }
+    { 
         public string StartButtonText { get; private set; }
-        public bool StartButtonIsEnabled { get; private set; }
-        
-        private async void HandlePlayerButtonClicked(string player)
-        {
-            if (StartButtonColor != _startButtonEventColor) return;
-            await Application.Current.MainPage.DisplayAlert("Congratulations", $"Player{player} was faster. Your reaction time was {ReactTime()} milliseconds!", "Ok");
-            Reset();
-        }
+        public Color StartButtonColor { get; private set; }
+        public ICommand ClickCommand => new Command<string>(HandleClick);
+        private readonly Random _rnd = new Random();
+        private bool _isFlashColor;
+        private bool _activeTimer;
+        private const string StartText = "start";
+        private static readonly Color FlashColor = Color.FromHex("#69F0AE");
+        private DateTime _flashStart;
 
-        private void HandleStartButtonClicked()
-        {
-            StartButtonText = "";
-            StartButtonIsEnabled = false;
-            RaiseAllPropertiesChanged();
-
-            _reactTime = _rnd.Next(3, 8);
-            Device.StartTimer(TimeSpan.FromSeconds(_reactTime), () =>
+        public ReactionViewModel() =>
+            InitializeGame();
+        private async void HandleClick(string parameter)
+        { 
+            if (_activeTimer | _isFlashColor && parameter.Equals(StartText)) return;
+            if (parameter.Equals(StartText))
             {
-                StartButtonColor = _startButtonEventColor;
-                _startTime = DateTime.Now;
+                _activeTimer = true;
+                StartButtonText = Empty;
                 RaiseAllPropertiesChanged();
-                return false;
-            });
+
+                Device.StartTimer(TimeSpan.FromSeconds(_rnd.Next(3, 10)), () =>
+               {
+                   _isFlashColor = true;
+                   StartButtonColor = FlashColor;
+                   _flashStart = DateTime.Now;
+                   RaiseAllPropertiesChanged();
+                   return false;
+               });
+            }
+            else if (_isFlashColor)
+            {
+                var configuration = parameter == "Player 1" ? PlayerRedWinDialog : PlayerBlueWinDialog;
+                var reactTime = DateTime.Now.Subtract(_flashStart).TotalMilliseconds;
+                await MaterialDialog.Instance.ConfirmAsync($"{parameter} Won! Your reaction time was {Convert.ToInt32(reactTime)} ms.", 
+                   "Congratulations", "Got It", Empty, configuration);
+                InitializeGame();
+            }
         }
-        
-        private void Reset()
+
+        private void InitializeGame()
         {
-            StartButtonColor = _startButtonColor;
-            StartButtonText = "Start";
-            StartButtonIsEnabled = true;
+            StartButtonColor = Color.Transparent;
+            _activeTimer = false;
+            _isFlashColor = false;
+            StartButtonText = StartText;
             RaiseAllPropertiesChanged();
-        }
-        
-        private int ReactTime()
-        {
-            var totalTime = DateTime.Now.Subtract(_startTime).TotalMilliseconds;
-            return (int) totalTime;
         }
     }
 }

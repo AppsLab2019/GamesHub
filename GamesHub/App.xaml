@@ -16,6 +16,9 @@
         <OnPlatform x:Key="FontFamily.OxygenRegular" x:TypeArguments="x:String">
             <On Platform="Android" Value="Fonts/Oxygen-Regular.ttf#Oxygen-Regular"/>
         </OnPlatform>
+        <OnPlatform x:Key="FontFamily.OxygenBold" x:TypeArguments="x:String">
+            <On Platform="Android" Value="Fonts/Oxygen-Bold.ttf#Oxygen-Bold"/>
+        </OnPlatform>
 
         <mtrltypo:MaterialFontConfiguration x:Key="Material.Font"
                                             Body1="{StaticResource FontFamily.OxygenRegular}"

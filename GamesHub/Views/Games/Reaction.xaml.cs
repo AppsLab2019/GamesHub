@@ -1,10 +1,8 @@
 ﻿namespace GamesHub.Views.Games
 {
     public partial class Reaction
-    {
-        public Reaction()
-        {
+    { 
+        public Reaction() =>
             InitializeComponent();
-        }
     }
 }

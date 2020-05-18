@@ -68,6 +68,7 @@
   <ItemGroup>
     <AndroidAsset Include="Assets\Fonts\Oxygen-Regular.ttf" />
     <AndroidAsset Include="Assets\Fonts\PressStart2P-Regular.ttf" />
+    <AndroidAsset Include="Assets\Fonts\Oxygen-Bold.ttf" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
