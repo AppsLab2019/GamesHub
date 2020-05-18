@@ -68,7 +68,7 @@
                                                   Grid.Column="1"
                                                   Text="{Binding Name}"
                                                   TextColor="{StaticResource Color.OnPrimary}"
-                                                  FontFamily="{StaticResource FontFamily.OxygenRegular}"
+                                                  FontFamily="{StaticResource FontFamily.OxygenBold}"
                                                   FontSize="Title"/>
 
                                 <ui:MaterialLabel Style="{StaticResource GameDescription}"

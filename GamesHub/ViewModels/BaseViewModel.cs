@@ -26,11 +26,11 @@ namespace GamesHub.ViewModels
         {
             BackgroundColor = XF.Material.Forms.Material.GetResource<Color>(MaterialConstants.Color.PRIMARY),
             TitleTextColor = XF.Material.Forms.Material.GetResource<Color>(MaterialConstants.Color.ON_PRIMARY),
-            TitleFontFamily = XF.Material.Forms.Material.GetResource<OnPlatform<string>>("FontFamily.OxygenRegular"),
+            TitleFontFamily = XF.Material.Forms.Material.GetResource<OnPlatform<string>>("FontFamily.OxygenBold"),
             MessageTextColor = Color.FromHex("#FF5252"),
-            MessageFontFamily = XF.Material.Forms.Material.GetResource<OnPlatform<string>>("FontFamily.OxygenRegular"),
+            MessageFontFamily = XF.Material.Forms.Material.GetResource<OnPlatform<string>>("FontFamily.OxygenBold"),
             TintColor = Color.White,
-            ButtonFontFamily = XF.Material.Forms.Material.GetResource<OnPlatform<string>>("FontFamily.OxygenRegular"),
+            ButtonFontFamily = XF.Material.Forms.Material.GetResource<OnPlatform<string>>("FontFamily.OxygenBold"),
             CornerRadius = 8,
             ScrimColor = Color.FromHex("#232F34").MultiplyAlpha(0.32),
             ButtonAllCaps = false
@@ -40,11 +40,11 @@ namespace GamesHub.ViewModels
         {
             BackgroundColor = XF.Material.Forms.Material.GetResource<Color>(MaterialConstants.Color.PRIMARY),
             TitleTextColor = XF.Material.Forms.Material.GetResource<Color>(MaterialConstants.Color.ON_PRIMARY),
-            TitleFontFamily = XF.Material.Forms.Material.GetResource<OnPlatform<string>>("FontFamily.OxygenRegular"),
+            TitleFontFamily = XF.Material.Forms.Material.GetResource<OnPlatform<string>>("FontFamily.OxygenBold"),
             MessageTextColor = Color.FromHex("#448AFF"),
-            MessageFontFamily = XF.Material.Forms.Material.GetResource<OnPlatform<string>>("FontFamily.OxygenRegular"),
+            MessageFontFamily = XF.Material.Forms.Material.GetResource<OnPlatform<string>>("FontFamily.OxygenBold"),
             TintColor = Color.White,
-            ButtonFontFamily = XF.Material.Forms.Material.GetResource<OnPlatform<string>>("FontFamily.OxygenRegular"),
+            ButtonFontFamily = XF.Material.Forms.Material.GetResource<OnPlatform<string>>("FontFamily.OxygenBold"),
             CornerRadius = 8,
             ScrimColor = Color.FromHex("#232F34").MultiplyAlpha(0.32),
             ButtonAllCaps = false
@@ -54,11 +54,11 @@ namespace GamesHub.ViewModels
         {
             BackgroundColor = XF.Material.Forms.Material.GetResource<Color>(MaterialConstants.Color.PRIMARY),
             TitleTextColor = XF.Material.Forms.Material.GetResource<Color>(MaterialConstants.Color.ON_PRIMARY),
-            TitleFontFamily = XF.Material.Forms.Material.GetResource<OnPlatform<string>>("FontFamily.OxygenRegular"),
+            TitleFontFamily = XF.Material.Forms.Material.GetResource<OnPlatform<string>>("FontFamily.OxygenBold"),
             MessageTextColor = XF.Material.Forms.Material.GetResource<Color>(MaterialConstants.Color.ON_SURFACE),
-            MessageFontFamily = XF.Material.Forms.Material.GetResource<OnPlatform<string>>("FontFamily.OxygenRegular"),
+            MessageFontFamily = XF.Material.Forms.Material.GetResource<OnPlatform<string>>("FontFamily.OxygenBold"),
             TintColor = Color.White,
-            ButtonFontFamily = XF.Material.Forms.Material.GetResource<OnPlatform<string>>("FontFamily.OxygenRegular"),
+            ButtonFontFamily = XF.Material.Forms.Material.GetResource<OnPlatform<string>>("FontFamily.OxygenBold"),
             CornerRadius = 8,
             ScrimColor = Color.FromHex("#232F34").MultiplyAlpha(0.32),
             ButtonAllCaps = false
