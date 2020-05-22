@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -18,13 +19,13 @@ namespace GamesHub.ViewModels.Games
 
         public MathViewModel()
         {
-            OperationAnswers = new int[3];
+            Answers = new int[3];
             AnswerCommand = new Command<string>(HandleClick);
             InitializeGame();
         }
 
         public string Operation { get; private set; }
-        public int[] OperationAnswers { get; }
+        public int[] Answers { get; private set; }
         public ICommand AnswerCommand { get; }
         public int PlayerRedScore { get; private set; }
 
@@ -41,9 +42,9 @@ namespace GamesHub.ViewModels.Games
             var answerIndex = int.Parse(indexes[1]);
 
             if (player == 1)
-                ManageScore(ref _playerRedScore, OperationAnswers[answerIndex]);
+                ManageScore(ref _playerRedScore, Answers[answerIndex]);
             else
-                ManageScore(ref _playerBlueScore, OperationAnswers[answerIndex]);
+                ManageScore(ref _playerBlueScore, Answers[answerIndex]);
             NextRoundAndCheckForWinner();
         }
 
@@ -69,22 +70,18 @@ namespace GamesHub.ViewModels.Games
 
         private void GenerateAnswers()
         {
-            OperationAnswers[_random.Next(0, OperationAnswers.Length)] = _result;
-            for (var i = 0; i < OperationAnswers.Length; i++)
+            var answers = new HashSet<int>();
+            for (var i = 0; i < Answers.Length; i++)
             {
-                if (OperationAnswers[i] == _result) continue;
-                for (var j = 0; j < 99; j++)
+                int answer;
+                do
                 {
-                    var wrongAnswer = 0;
-                    if (_random.Next(0, 2) == 1)
-                        wrongAnswer = _result + _random.Next(0, 5);
-                    else
-                        wrongAnswer = _result - _random.Next(0, 5);
-
-                    if (OperationAnswers.Contains(wrongAnswer)) continue;
-                    OperationAnswers[i] = wrongAnswer;
-                }
+                    var randomNumber = _random.Next(1, 6);
+                    answer = _random.Next(0, 2) == 0 ? _result + randomNumber : _result - randomNumber;
+                } while (!answers.Add(answer));
             }
+            Answers = answers.ToArray();
+            Answers[_random.Next(0, Answers.Length)] = _result;
         }
         private async void NextRoundAndCheckForWinner()
         {
