@@ -17,7 +17,7 @@ namespace GamesHub.ViewModels.Games
         private bool _isFlashColor;
         private bool _activeTimer;
         private const string StartText = "start";
-        private static readonly Color FlashColor = (Color)Resources["PrimaryGreen"];
+        private static readonly Color FlashColor = (Color)Resources["Color.PrimaryGreen"];
         private DateTime _flashStart;
 
         public ReactionViewModel() =>
