@@ -9,6 +9,9 @@ namespace GamesHub.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
+        public static ResourceDictionary Resources =>
+            Application.Current.Resources;
+
         #region INotifyPropertyChanged
         
         protected void RaiseAllPropertiesChanged() =>

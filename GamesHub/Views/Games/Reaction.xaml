@@ -36,7 +36,7 @@
             <ui:MaterialButton Style="{StaticResource Button}"
                                Grid.Row="0"
                                Text="PLAYER 2"
-                               TextColor="{StaticResource Color.PlayerBlue}"
+                               TextColor="{StaticResource Color.PrimaryBlue}"
                                CommandParameter="Player 2"
                                Rotation="180" />
 
@@ -52,7 +52,7 @@
                                Grid.Row="2"
                                Text="PLAYER 1"
                                CommandParameter="Player 1"
-                               TextColor="{StaticResource Color.PlayerRed}" />
+                               TextColor="{StaticResource Color.PrimaryRed}" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

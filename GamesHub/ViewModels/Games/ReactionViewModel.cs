@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Runtime.Versioning;
 using System.Windows.Input;
 using Xamarin.Forms;
 using XF.Material.Forms.UI.Dialogs;
@@ -16,7 +17,7 @@ namespace GamesHub.ViewModels.Games
         private bool _isFlashColor;
         private bool _activeTimer;
         private const string StartText = "start";
-        private static readonly Color FlashColor = Color.FromHex("#69F0AE");
+        private static readonly Color FlashColor = (Color)Resources["PrimaryGreen"];
         private DateTime _flashStart;
 
         public ReactionViewModel() =>
