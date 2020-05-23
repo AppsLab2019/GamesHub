@@ -5,6 +5,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:GamesHub.ViewModels.Games;assembly=GamesHub"
+             xmlns:ui="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
              mc:Ignorable="d"
              x:Class="GamesHub.Views.Games.TicTacToe"
              Style="{StaticResource Style.Page}">
@@ -14,6 +15,7 @@
             <Style TargetType="ImageButton">
                 <Setter Property="BackgroundColor" Value="{StaticResource Color.Background}" />
                 <Setter Property="CornerRadius" Value="0"/>
+                <Setter Property="Command" Value="{Binding ClickCommand}"/>
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -23,39 +25,59 @@
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
-        <StackLayout>
-            <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" ColumnSpacing="15"
-                  RowSpacing="15"
-                  BackgroundColor="{StaticResource Color.Primary}">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="100" />
-                    <RowDefinition Height="100" />
-                    <RowDefinition Height="100" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <ImageButton Grid.Column="0" Grid.Row="0" Source="{Binding SourceArr[0]}"
-                             Command="{Binding ClickCommand}" CommandParameter="0" />
-                <ImageButton Grid.Column="1" Grid.Row="0" Source="{Binding SourceArr[1]}"
-                             Command="{Binding ClickCommand}" CommandParameter="1" />
-                <ImageButton Grid.Column="2" Grid.Row="0" Source="{Binding SourceArr[2]}"
-                             Command="{Binding ClickCommand}" CommandParameter="2" />
-                <ImageButton Grid.Column="0" Grid.Row="1" Source="{Binding SourceArr[3]}"
-                             Command="{Binding ClickCommand}" CommandParameter="3" />
-                <ImageButton Grid.Column="1" Grid.Row="1" Source="{Binding SourceArr[4]}"
-                             Command="{Binding ClickCommand}" CommandParameter="4" />
-                <ImageButton Grid.Column="2" Grid.Row="1" Source="{Binding SourceArr[5]}"
-                             Command="{Binding ClickCommand}" CommandParameter="5" />
-                <ImageButton Grid.Column="0" Grid.Row="2" Source="{Binding SourceArr[6]}"
-                             Command="{Binding ClickCommand}" CommandParameter="6" />
-                <ImageButton Grid.Column="1" Grid.Row="2" Source="{Binding SourceArr[7]}"
-                             Command="{Binding ClickCommand}" CommandParameter="7" />
-                <ImageButton Grid.Column="2" Grid.Row="2" Source="{Binding SourceArr[8]}"
-                             Command="{Binding ClickCommand}" CommandParameter="8" />
-            </Grid>
-        </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="330" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+                <StackLayout Grid.Row="1">
+                    <Grid VerticalOptions="CenterAndExpand"
+                          HorizontalOptions="CenterAndExpand"
+                          ColumnSpacing="15"
+                          RowSpacing="15"
+                          BackgroundColor="{StaticResource Color.Primary}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="100" />
+                            <RowDefinition Height="100" />
+                            <RowDefinition Height="100" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <ImageButton Grid.Column="0" Grid.Row="0" Source="{Binding SourceArr[0]}"
+                                     CommandParameter="0" />
+                        <ImageButton Grid.Column="1" Grid.Row="0" Source="{Binding SourceArr[1]}"
+                                     CommandParameter="1" />
+                        <ImageButton Grid.Column="2" Grid.Row="0" Source="{Binding SourceArr[2]}"
+                                     CommandParameter="2" />
+                        <ImageButton Grid.Column="0" Grid.Row="1" Source="{Binding SourceArr[3]}"
+                                     CommandParameter="3" />
+                        <ImageButton Grid.Column="1" Grid.Row="1" Source="{Binding SourceArr[4]}"
+                                     CommandParameter="4" />
+                        <ImageButton Grid.Column="2" Grid.Row="1" Source="{Binding SourceArr[5]}"
+                                     CommandParameter="5" />
+                        <ImageButton Grid.Column="0" Grid.Row="2" Source="{Binding SourceArr[6]}"
+                                     CommandParameter="6" />
+                        <ImageButton Grid.Column="1" Grid.Row="2" Source="{Binding SourceArr[7]}"
+                                     CommandParameter="7" />
+                        <ImageButton Grid.Column="2" Grid.Row="2" Source="{Binding SourceArr[8]}"
+                                     CommandParameter="8" />
+                    </Grid>
+                </StackLayout>
+                <StackLayout Grid.Row="0"
+                             HorizontalOptions="CenterAndExpand"
+                             VerticalOptions="CenterAndExpand">
+                    <ui:MaterialLabel Text="Turn:"
+                                      TextColor="{StaticResource Color.OnPrimary}"
+                                      FontSize="50"
+                                      FontFamily="{StaticResource FontFamily.OxygenBold}"/>
+                    <Image Source="{Binding NextTurn}"
+                           HeightRequest="50"
+                           WidthRequest="50"/>
+                </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

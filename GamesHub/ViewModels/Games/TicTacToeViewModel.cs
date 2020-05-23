@@ -1,4 +1,6 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Linq;
+using System.Windows.Input;
 using Xamarin.Forms;
 using XF.Material.Forms.UI.Dialogs;
 
@@ -11,23 +13,31 @@ namespace GamesHub.ViewModels.Games
 
         public ImageSource[] SourceArr { get; }
         private int _turn;
+        private readonly Random _random = new Random();
 
         public TicTacToeViewModel()
         {
-            _turn = 1;
+            _turn = _random.Next(0, 2);
+            UpdateTurnImage();
             SourceArr = new ImageSource[9];
             ClickCommand = new Command<string>(HandleClick);
         }
 
         public ICommand ClickCommand { get; }
+        public ImageSource NextTurn { get; private set; }
 
         private void HandleClick(string btnIndex)
         {
             var index = int.Parse(btnIndex);
             if (SourceArr[index] != null) return;
             SourceArr[index] = _turn++ % 2 == 1 ? _imageCircle : _imageCross;
+            UpdateTurnImage();
             HandleWin(GetWinner());
             RaiseAllPropertiesChanged();
+        }
+        private void UpdateTurnImage()
+        {
+            NextTurn = _turn % 2 == 1 ? _imageCircle : _imageCross;
         }
 
         private ImageSource GetWinner()
@@ -56,10 +66,16 @@ namespace GamesHub.ViewModels.Games
             return null;
         }
 
+        private bool PossibleDraw()
+        {
+            var cellsFilled = SourceArr.Count(image => image != null);
+            return cellsFilled == 9;
+        }
+
         private async void HandleWin(ImageSource result)
         {
             var player = result ==_imageCircle ? "Circle" : "Cross";
-            if (result == null && _turn == 10)
+            if (PossibleDraw() && result == null)
             {
                 await MaterialDialog.Instance.ConfirmAsync("Well that happened...",
                     "Draw", "Got It", string.Empty, BasicDialog);
@@ -75,7 +91,8 @@ namespace GamesHub.ViewModels.Games
 
         private void Reset()
         {
-            _turn = 1;
+            _turn = _random.Next(0, 2);
+            UpdateTurnImage();  
             for (var i = 0; i < SourceArr.Length; i++)
                 SourceArr[i] = null;
             RaiseAllPropertiesChanged();
