@@ -17,10 +17,13 @@ namespace GamesHub.ViewModels.Games
 
         public TicTacToeViewModel()
         {
+            for (var i = 0; i < _score.Length; i++) _score[i] = 0;
+            Score = _score;
             _turn = _random.Next(0, 2);
             UpdateTurnImage();
             SourceArr = new ImageSource[9];
             ClickCommand = new Command<string>(HandleClick);
+            ResetCommand = new Command(HandleReset);
         }
 
         public ICommand ClickCommand { get; }
@@ -79,16 +82,19 @@ namespace GamesHub.ViewModels.Games
             {
                 await MaterialDialog.Instance.ConfirmAsync("Well that happened...",
                     "Draw", "Got It", string.Empty, BasicDialog);
+                UpdateScore("Draw");
                 Reset();
             }
             if (result == null) return;
-
             var configuration = player.Equals("Circle") ? PlayerBlueWinDialog : PlayerRedWinDialog;
             await MaterialDialog.Instance.ConfirmAsync($"Player {player} Won!",
                 "Congratulations", "Got It", string.Empty, configuration);
+            UpdateScore(player);
             Reset();
         }
-
+        public ICommand ResetCommand { get; }
+        public int[] Score { get; private set; }
+        private readonly int[] _score = new int[3];
         private void Reset()
         {
             _turn = _random.Next(0, 2);
@@ -96,6 +102,31 @@ namespace GamesHub.ViewModels.Games
             for (var i = 0; i < SourceArr.Length; i++)
                 SourceArr[i] = null;
             RaiseAllPropertiesChanged();
+        }
+
+        private void HandleReset()
+        {
+            for (var i = 0; i < _score.Length; i++)
+                _score[i] = 0;
+            Score = _score;
+            Reset();
+        }
+
+        private void UpdateScore(string winner)
+        {
+            switch (winner)
+            {
+                case "Draw":
+                    _score[1]++;
+                    break;
+                case "Circle":
+                    _score[2]++;
+                    break;
+                case "Cross":
+                    _score[0]++;
+                    break;
+            }
+            Score = _score;
         }
     }
 }
