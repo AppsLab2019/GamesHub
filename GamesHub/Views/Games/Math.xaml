@@ -18,11 +18,14 @@
                 <Setter Property="TextColor" Value="White" />
                 <Setter Property="Text" Value="{Binding Operation}" />
             </Style>
-            <Style x:Key="AnswerButton" TargetType="ui:MaterialButton">
+            <Style TargetType="Button">
                 <Setter Property="TextColor" Value="White" />
                 <Setter Property="FontSize" Value="30" />
                 <Setter Property="BackgroundColor" Value="#1E1E1E" />
-                <Setter Property="Command" Value="{Binding AnswerCommand}" />
+                <Setter Property="Command" Value="{Binding AnswerCommand}"/>
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="HeightRequest" Value="140"/>
+                <Setter Property="Margin" Value="3, 10"/>
             </Style>
             <Style x:Key="Score" TargetType="ui:MaterialLabel">
                 <Setter Property="FontSize" Value="50" />
@@ -39,36 +42,36 @@
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="150" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="150" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <ui:MaterialButton Text="{Binding Answers[0]}"
-                               Grid.Row="0"
-                               Grid.Column="0"
-                               Rotation="180"
-                               Style="{StaticResource AnswerButton}"
-                               CommandParameter="0 0" />
-            <ui:MaterialButton Text="{Binding Answers[1]}"
-                               Grid.Row="0"
-                               Grid.Column="1"
-                               Rotation="180"
-                               Style="{StaticResource AnswerButton}"
-                               CommandParameter="0 1" />
-            <ui:MaterialButton Text="{Binding Answers[2]}"
-                               Grid.Row="0"
-                               Grid.Column="2"
-                               Rotation="180"
-                               Style="{StaticResource AnswerButton}"
-                               CommandParameter="0 2" />
+            <Button Text="{Binding Buttons[0].Text}"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Rotation="180"
+                    BackgroundColor="{Binding Buttons[0].Color}"
+                    CommandParameter="0 0" />
+            <Button Text="{Binding Buttons[1].Text}"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Rotation="180"
+                    BackgroundColor="{Binding Buttons[1].Color}"
+                    CommandParameter="0 1" />
+            <Button Text="{Binding Buttons[2].Text}"
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    Rotation="180"
+                    BackgroundColor="{Binding Buttons[2].Color}"
+                    CommandParameter="0 2" />
             <ui:MaterialLabel Grid.Row="2"
                               Grid.ColumnSpan="3"
                               Grid.Column="0"
@@ -89,22 +92,22 @@
             <ui:MaterialLabel Grid.Row="3"
                               Grid.ColumnSpan="3"
                               Grid.Column="0" />
-            <ui:MaterialButton Text="{Binding Answers[0]}"
-                               Style="{StaticResource AnswerButton}"
-                               Grid.Row="5"
-                               Grid.Column="0"
-                               Command="{Binding AnswerCommand}"
-                               CommandParameter="1 0" />
-            <ui:MaterialButton Text="{Binding Answers[1]}"
-                               Style="{StaticResource AnswerButton}"
-                               Grid.Row="5"
-                               Grid.Column="1"
-                               CommandParameter="1 1" />
-            <ui:MaterialButton Text="{Binding Answers[2]}"
-                               Style="{StaticResource AnswerButton}"
-                               Grid.Row="5"
-                               Grid.Column="2"
-                               CommandParameter="1 2" />
+            <Button Text="{Binding Buttons[0].Text}"
+                    Grid.Row="5"
+                    Grid.Column="0"
+                    BackgroundColor="{Binding Buttons[0].Color}"
+                    Command="{Binding AnswerCommand}"
+                    CommandParameter="1 0" />
+            <Button Text="{Binding Buttons[1].Text}"
+                    Grid.Row="5"
+                    Grid.Column="1"
+                    BackgroundColor="{Binding Buttons[1].Color}"
+                    CommandParameter="1 1" />
+            <Button Text="{Binding Buttons[2].Text}"
+                    Grid.Row="5"
+                    Grid.Column="2"
+                    BackgroundColor="{Binding Buttons[2].Color}"
+                    CommandParameter="1 2" />
 
         </Grid>
     </ContentPage.Content>
