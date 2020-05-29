@@ -45,7 +45,7 @@ namespace GamesHub.ViewModels
             {
                 Name = "Color Mind",
                 Description = "Ever wanted to compare your minds? Then come here!",
-                Image = "math_icon.png"
+                Image = "colormind_icon.png"
             }
         };
     }
