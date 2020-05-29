@@ -20,6 +20,7 @@ namespace GamesHub
             Routing.RegisterRoute("Clicker", typeof(Clicker));
             Routing.RegisterRoute("Mines", typeof(Mines));
             Routing.RegisterRoute("Memory Game", typeof(Memory));
+            Routing.RegisterRoute("Color Mind", typeof(ColorMind));
         }
     }
 }
