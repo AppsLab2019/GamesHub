@@ -1,2 +1,2 @@
-# GamesHub
-Zábavná aplikácia plná hier pre jedného alebo dvoch hráčov.
+# GameYa
+Zábavná aplikácia s hrami pre dvoch hráčov.
