@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameYa.Android", "GameYa.Android\GameYa.Android.csproj", "{A8A39F9E-9502-462A-86D6-DE0E626F4543}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameYa", "GameYa\GameYa.csproj", "{3E6BFF83-F622-4F1A-A583-0E61925ADA64}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A8A39F9E-9502-462A-86D6-DE0E626F4543}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8A39F9E-9502-462A-86D6-DE0E626F4543}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8A39F9E-9502-462A-86D6-DE0E626F4543}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{A8A39F9E-9502-462A-86D6-DE0E626F4543}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8A39F9E-9502-462A-86D6-DE0E626F4543}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8A39F9E-9502-462A-86D6-DE0E626F4543}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{3E6BFF83-F622-4F1A-A583-0E61925ADA64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E6BFF83-F622-4F1A-A583-0E61925ADA64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E6BFF83-F622-4F1A-A583-0E61925ADA64}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{3E6BFF83-F622-4F1A-A583-0E61925ADA64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E6BFF83-F622-4F1A-A583-0E61925ADA64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E6BFF83-F622-4F1A-A583-0E61925ADA64}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {44C9467E-DF64-4B42-B5D4-42530272DE05}
+	EndGlobalSection
+EndGlobal

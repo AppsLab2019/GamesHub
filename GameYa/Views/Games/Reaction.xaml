@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:GameYa.ViewModels.Games;assembly=GameYa"
+             xmlns:ui="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+             mc:Ignorable="d"
+             x:Class="GameYa.Views.Games.Reaction"
+             Style="{StaticResource Style.Page}">
+
+    <ContentPage.BindingContext>
+        <vm:ReactionViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="Button" TargetType="ui:MaterialButton">
+                <Setter Property="ButtonType" Value="Text" />
+                <Setter Property="FontSize" Value="50" />
+                <Setter Property="FontFamily" Value="{StaticResource FontFamily.OxygenBold}" />
+                <Setter Property="PressedBackgroundColor" Value="Transparent" />
+                <Setter Property="Command" Value="{Binding ClickCommand}"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ui:MaterialButton Style="{StaticResource Button}"
+                               Grid.Row="0"
+                               Text="PLAYER 2"
+                               TextColor="{StaticResource Color.PrimaryBlue}"
+                               CommandParameter="Player 2"
+                               Rotation="180" />
+
+            <ui:MaterialButton Style="{StaticResource Button}"
+                               ButtonType="Flat"
+                               BackgroundColor="{Binding StartButtonColor}"
+                               Grid.Row="1"
+                               Text="{Binding StartButtonText}"
+                               CommandParameter="start"
+                               TextColor="{StaticResource Color.OnPrimary}" />
+
+            <ui:MaterialButton Style="{StaticResource Button}"
+                               Grid.Row="2"
+                               Text="PLAYER 1"
+                               CommandParameter="Player 1"
+                               TextColor="{StaticResource Color.PrimaryRed}" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

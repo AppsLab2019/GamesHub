@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ui="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+             xmlns:vm="clr-namespace:GameYa.ViewModels.Games;assembly=GameYa"
+             mc:Ignorable="d"
+             x:Class="GameYa.Views.Games.ColorMind"
+             Style="{StaticResource Style.Page}">
+
+    <ContentPage.BindingContext>
+        <vm:ColorMindViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="ui:MaterialLabel">
+                <Setter Property="FontSize" Value="50" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="FontFamily" Value="{StaticResource FontFamily.OxygenBold}" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="Text" Value="{Binding ColorMind.ColorName}"/>
+                <Setter Property="TextColor" Value="{Binding ColorMind.Color}"/>
+            </Style>
+            <Style x:Key="Style.Button" TargetType="ui:MaterialButton">
+                <Setter Property="HeightRequest" Value="150" />
+                <Setter Property="ButtonType" Value="Text" />
+                <Setter Property="FontSize" Value="50" />
+                <Setter Property="FontFamily" Value="{StaticResource FontFamily.OxygenBold}" />
+                <Setter Property="Command" Value="{Binding ClickCommand}"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <ui:MaterialButton Grid.Row="0"
+                               Rotation="180"
+                               Style="{StaticResource Style.Button}"
+                               TextColor="{StaticResource Color.PrimaryBlue}"
+                               Text="Player 2"
+                               CommandParameter="1"/>
+
+            <ui:MaterialButton Grid.Row="5"
+                               Style="{StaticResource Style.Button}"
+                               TextColor="{StaticResource Color.PrimaryRed}"
+                               Text="Player 1"
+                               CommandParameter="0"/>
+
+            <ui:MaterialLabel Grid.Row="1"
+                              Rotation="180"
+                              TextColor="{StaticResource Color.PrimaryBlue}"
+                              Text="{Binding Players[1].Score}" 
+                              FontFamily="{StaticResource FontFamily.OxygenRegular}"/>
+
+            <ui:MaterialLabel Grid.Row="2"
+                              Rotation="180" />
+
+            <ui:MaterialLabel Grid.Row="3" />
+
+            <ui:MaterialLabel Grid.Row="4"
+                              TextColor="{StaticResource Color.PrimaryRed}"
+                              Text="{Binding Players[0].Score}" 
+                              FontFamily="{StaticResource FontFamily.OxygenRegular}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
