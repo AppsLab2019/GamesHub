@@ -46,6 +46,12 @@ namespace GameYa.ViewModels
                 Name = "Color Mind",
                 Description = "Ever wanted to compare your minds? Then come here!",
                 Image = "colormind_icon.png"
+            },
+            new Game
+            {
+                Name = "SwipeGame",
+                Description = "Ever wanted to compare your minds? Then come here!",
+                Image = ""
             }
         };
     }

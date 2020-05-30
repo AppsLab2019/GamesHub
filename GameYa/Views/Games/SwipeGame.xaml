@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ui="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+             xmlns:vm="clr-namespace:GameYa.ViewModels.Games;assembly=GameYa"
+             mc:Ignorable="d"
+             x:Class="GameYa.Views.Games.SwipeGame"
+             Style="{StaticResource Style.Page}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="ui:MaterialLabel">
+                <Setter Property="HeightRequest" Value="200" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="FontSize" Value="50" />
+                <Setter Property="FontFamily" Value="{StaticResource FontFamily.OxygenBold}" />
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <vm:SwipeGameViewModel/>
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackLayout Grid.Row="0" >
+            <ui:MaterialLabel Text="PLAYER 2" Rotation="180" TextColor="{StaticResource Color.PrimaryBlue}">
+                <ui:MaterialLabel.GestureRecognizers>
+                    <SwipeGestureRecognizer Command="{Binding SwipeCommand}" Direction="Up" CommandParameter="1 UP"/>
+                    <SwipeGestureRecognizer Command="{Binding SwipeCommand}" Direction="Down" CommandParameter="1 DOWN"/>
+                    <SwipeGestureRecognizer Command="{Binding SwipeCommand}" Direction="Right" CommandParameter="1 RIGHT"/>
+                    <SwipeGestureRecognizer Command="{Binding SwipeCommand}" Direction="Left" CommandParameter="1 LEFT"/>
+                </ui:MaterialLabel.GestureRecognizers>
+            </ui:MaterialLabel>
+        </StackLayout>
+        <StackLayout Grid.Row="5">
+            <ui:MaterialLabel Text="PLAYER 1" TextColor="{StaticResource Color.PrimaryRed}">
+                <ui:MaterialLabel.GestureRecognizers>
+                    <SwipeGestureRecognizer Command="{Binding SwipeCommand}" Direction="Up" CommandParameter="0 UP"/>
+                    <SwipeGestureRecognizer Command="{Binding SwipeCommand}" Direction="Down" CommandParameter="0 DOWN"/>
+                    <SwipeGestureRecognizer Command="{Binding SwipeCommand}" Direction="Right" CommandParameter="0 RIGHT"/>
+                    <SwipeGestureRecognizer Command="{Binding SwipeCommand}" Direction="Left" CommandParameter="0 LEFT"/>
+                </ui:MaterialLabel.GestureRecognizers>
+            </ui:MaterialLabel>
+        </StackLayout>
+        <ui:MaterialLabel Grid.Row="1"
+                          Rotation="180"
+                          TextColor="{StaticResource Color.PrimaryBlue}"
+                          Text="{Binding Players[1].Score}" 
+                          FontFamily="{StaticResource FontFamily.OxygenRegular}"/>
+
+        <ui:MaterialLabel Grid.Row="2"
+                          Text="{Binding DirectionText}" TextColor="{StaticResource Color.OnPrimary}"
+                          Rotation="180" 
+                          />
+
+        <ui:MaterialLabel Grid.Row="3"
+                          Text="{Binding DirectionText}" TextColor="{StaticResource Color.OnPrimary}"/>
+
+        <ui:MaterialLabel Grid.Row="4"
+                          TextColor="{StaticResource Color.PrimaryRed}"
+                          Text="{Binding Players[0].Score}" 
+                          FontFamily="{StaticResource FontFamily.OxygenRegular}"/>
+    </Grid>
+</ContentPage>

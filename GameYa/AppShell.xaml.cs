@@ -17,6 +17,7 @@ namespace GameYa
             Routing.RegisterRoute("Reaction", typeof(Reaction));
             Routing.RegisterRoute("Math", typeof(Math));
             Routing.RegisterRoute("Color Mind", typeof(ColorMind));
+            Routing.RegisterRoute("SwipeGame", typeof(SwipeGame));
         }
     }
 }
