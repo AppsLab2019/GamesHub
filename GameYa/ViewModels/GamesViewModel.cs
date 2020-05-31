@@ -49,8 +49,14 @@ namespace GameYa.ViewModels
             },
             new Game
             {
-                Name = "SwipeGame",
-                Description = "Ever wanted to compare your minds? Then come here!",
+                Name = "Swipe Game",
+                Description = "All you need to do is keep swiping!",
+                Image = ""
+            },
+            new Game
+            {
+                Name = "ABC Pattern",
+                Description = "",
                 Image = ""
             }
         };
