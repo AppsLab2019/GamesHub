@@ -3,12 +3,12 @@ using Xamarin.Forms;
 
 namespace GameYa.Models
 {
-    public class ColorMind : BaseModel, IEquatable<ColorMind>
+    public class ColorModel : BaseModel, IEquatable<ColorModel>
     {
         private Color _color;
         private string _colorName;
 
-        public ColorMind(string colorName, Color color)
+        public ColorModel(string colorName, Color color)
         {
             _colorName = colorName;
             _color = color;
@@ -26,7 +26,7 @@ namespace GameYa.Models
             set => OnPropertyChanged(ref _colorName, value);
         }
 
-        public bool Equals(ColorMind other)
+        public bool Equals(ColorModel other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;

@@ -16,12 +16,12 @@ namespace GameYa.ViewModels.Games
             Players = new Player[2];
             for (var index = 0; index < Players.Length; index++)
                 Players[index] = new Player(0);
-            ColorMind = new ColorMind("", Color.Default);
+            ColorMind = new ColorModel("", Color.Default);
             ClickCommand = new Command<string>(HandleClick);
             InitializeGame();
         }
 
-        public ColorMind ColorMind { get; }
+        public ColorModel ColorMind { get; }
         public ICommand ClickCommand { get; }
         private readonly Random _random = new Random();
 
@@ -80,14 +80,14 @@ namespace GameYa.ViewModels.Games
                     player.Score = 0;
         }
 
-        private readonly List<ColorMind> _colors = new List<ColorMind>
+        private readonly List<ColorModel> _colors = new List<ColorModel>
         {
-            new ColorMind("RED", Color.FromHex("#FF5252")), 
-            new ColorMind("BLUE", Color.FromHex("#448AFF")), 
-            new ColorMind("GREEN", Color.FromHex("#69F0AE")),
-            new ColorMind("WHITE", Color.White),
-            new ColorMind("ORANGE", Color.FromHex("#FFAB40")),
-            new ColorMind("YELLOW", Color.FromHex("#FFFF00"))
+            new ColorModel("RED", Color.FromHex("#FF5252")), 
+            new ColorModel("BLUE", Color.FromHex("#448AFF")), 
+            new ColorModel("GREEN", Color.FromHex("#69F0AE")),
+            new ColorModel("WHITE", Color.White),
+            new ColorModel("ORANGE", Color.FromHex("#FFAB40")),
+            new ColorModel("YELLOW", Color.FromHex("#FFFF00"))
         };
     }
 }
