@@ -55,7 +55,7 @@ namespace GameYa.ViewModels
             },
             new Game
             {
-                Name = "ABC Pattern",
+                Name = "Letter Pattern",
                 Description = "Yep, another game as simple as this description!",
                 Image = "letterpattern_icon.png"
             }

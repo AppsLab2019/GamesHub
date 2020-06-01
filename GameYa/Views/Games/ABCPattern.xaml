@@ -22,7 +22,7 @@
             <Style x:Key="Style.Button" TargetType="ui:MaterialButton">
                 <Setter Property="HeightRequest" Value="150"/>
                 <Setter Property="FontSize" Value="30"/>
-                <Setter Property="FontFamily" Value="{StaticResource FontFamily.OxygenBold}"/>
+                <Setter Property="FontFamily" Value="{StaticResource FontFamily.OxygenRegular}"/>
                 <Setter Property="Command" Value="{Binding ClickCommand}"/>
             </Style>
         </ResourceDictionary>
