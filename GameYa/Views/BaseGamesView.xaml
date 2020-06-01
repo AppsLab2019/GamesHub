@@ -41,6 +41,12 @@
                                   Text="Games"
                                   Margin="0, 10"/>
             </CollectionView.Header>
+            <CollectionView.Footer>
+                <StackLayout Padding="0, 15">
+                    <Image Source="openlab_logo.png"
+                           HeightRequest="25"/>
+                </StackLayout>
+            </CollectionView.Footer>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="m:Game">
                     <StackLayout Padding="4">
