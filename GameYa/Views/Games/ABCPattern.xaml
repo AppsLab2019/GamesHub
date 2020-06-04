@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ui="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+             xmlns:vm="clr-namespace:GameYa.ViewModels.Games;assembly=GameYa"
+             mc:Ignorable="d"
+             x:Class="GameYa.Views.Games.ABCPattern"
+             Style="{StaticResource Style.Page}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="ui:MaterialLabel">
+                <Setter Property="Grid.Column" Value="0"/>
+                <Setter Property="Grid.ColumnSpan" Value="3"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="FontSize" Value="50" />
+                <Setter Property="TextColor" Value="White" />
+            </Style>
+            <Style x:Key="Style.Button" TargetType="ui:MaterialButton">
+                <Setter Property="HeightRequest" Value="150"/>
+                <Setter Property="FontSize" Value="30"/>
+                <Setter Property="FontFamily" Value="{StaticResource FontFamily.OxygenRegular}"/>
+                <Setter Property="Command" Value="{Binding ClickCommand}"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <vm:ABCPatternViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <ui:MaterialLabel Grid.Row="1" 
+                              TextColor="{StaticResource Color.PrimaryBlue}"
+                              Rotation="180"
+                              Text="{Binding Players[1].Score}"
+                              FontFamily="{StaticResource FontFamily.OxygenRegular}"/>
+            <ui:MaterialLabel Grid.Row="2" 
+                              Rotation="180"
+                              Text="{Binding Combination}"/>
+
+            <ui:MaterialButton Grid.Row="0"
+                               Grid.Column="0" 
+                               Style="{StaticResource Style.Button}" 
+                               Text="C"
+                               Rotation="180"
+                               CommandParameter="1 C"/>
+
+            <ui:MaterialButton Grid.Row="0"
+                               Grid.Column="1" 
+                               Style="{StaticResource Style.Button}"
+                               Text="B"
+                               Rotation="180"
+                               CommandParameter="1 B"/>
+
+            <ui:MaterialButton Grid.Row="0"
+                               Grid.Column="2" 
+                               Style="{StaticResource Style.Button}"
+                               Text="A"
+                               Rotation="180"
+                               CommandParameter="1 A"/>
+
+            <ui:MaterialLabel Grid.Row="3" 
+                              Text="{Binding Combination}"/>
+            <ui:MaterialLabel Grid.Row="4" 
+                              TextColor="{StaticResource Color.PrimaryRed}"
+                              Text="{Binding Players[0].Score}"
+                              FontFamily="{StaticResource FontFamily.OxygenRegular}"/>
+
+            <ui:MaterialButton Grid.Row="5"
+                               Grid.Column="0"
+                               Style="{StaticResource Style.Button}"
+                               Text="A"
+                               CommandParameter="0 A"/>
+
+            <ui:MaterialButton Grid.Row="5"
+                               Grid.Column="1"
+                               Style="{StaticResource Style.Button}"
+                               Text="B"
+                               CommandParameter="0 B"/>
+
+            <ui:MaterialButton Grid.Row="5"
+                               Grid.Column="2"
+                               Style="{StaticResource Style.Button}"
+                               Text="C"
+                               CommandParameter="0 C"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
