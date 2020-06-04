@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using GameYa.Models;
@@ -13,6 +14,10 @@ namespace GameYa.ViewModels.Games
     {
         private readonly Random _random = new Random();
         private bool _waitTime;
+
+        private int BaseSpeed => 1600;
+        private int ScoreAverage => CalculateScoreAverage();
+        private int Speed => CalculateSpeed();
 
         public string DirectionText { get; set; }
         public ICommand SwipeCommand { get; }
@@ -49,7 +54,7 @@ namespace GameYa.ViewModels.Games
             }
 
             OnPropertyChanged(nameof(DirectionText));
-            Timer(1500);
+            Timer(Speed);
         }
 
         private async void HandleSwipeCommand(string swipe)
@@ -59,10 +64,7 @@ namespace GameYa.ViewModels.Games
             var player = int.Parse(swipe.Substring(0, 1));
 
             if (swipe.Contains(DirectionText))
-            {
                 Players[player].Score++;
-                Timer(1000);
-            }
 
             else if (Players[player].Score > 0)
                 Players[player].Score--;
@@ -89,12 +91,24 @@ namespace GameYa.ViewModels.Games
             {
                 _waitTime = false;
 
-                if (milliseconds == 1500)
-                    InitializeDirection();
+                InitializeDirection();
 
                 return false;
             });
         }
+
+        private int CalculateScoreAverage()
+        {
+            return Players.Select(player => player.Score).Sum() / 2;
+        }
+
+        private int CalculateSpeed()
+        {
+            if (ScoreAverage == 0) return BaseSpeed;
+            return BaseSpeed - ScoreAverage * 100;
+        }
+
+        
     }
 
 }
