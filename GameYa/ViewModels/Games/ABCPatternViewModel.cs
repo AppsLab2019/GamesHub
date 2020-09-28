@@ -63,8 +63,8 @@ namespace GameYa.ViewModels.Games
             }
             else if (WrongAnswer(player))
             {
-                if (Players[player].Score <= 0) return;
-                Players[player].Score--;
+                if (Players[player].Score > 0)
+                    Players[player].Score--;
                 Timer();
             }
             if (Winner()) GameEnd(player);
